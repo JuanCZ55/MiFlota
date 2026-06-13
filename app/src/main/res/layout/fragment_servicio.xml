@@ -1,13 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.servicio.ServicioFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha:"
+            android:textColor="@color/textPrimary" />
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ems="10"
+            android:hint="DD/MM/AAAA"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/tvKilometraje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kilometraje:"
+            android:textColor="@color/textPrimary" />
+
+        <EditText
+            android:id="@+id/etKilometraje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ems="10"
+            android:hint="Ingrese kilometraje"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <LinearLayout
+            android:id="@+id/llServicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <CheckBox
+                android:id="@+id/cbAceite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Aceite"
+                android:textColor="@color/textPrimary"
+                
+                />
+
+            <CheckBox
+                android:id="@+id/cbAlineoBalanceo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Alineación y Balanceo"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbBombaAceite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Bomba de Aceite"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbBombaAgua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Bomba de Agua"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbBombaCombustible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Bomba de Combustible"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbBujias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Bujias"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbCorreaDentada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Correa Dentada"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbFiltroDeAceite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Filtro de Aceite"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbCorreaPolyV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Correa Poly-V"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbFiltroDeAire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Filtro de Aire"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbFiltroDeCombustible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:text="Filtro de Combustible"
+                android:textColor="@color/textPrimary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvProveedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proveedor"
+            android:textColor="@color/textPrimary" />
+
+        <EditText
+            android:id="@+id/etProveedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ems="10"
+            android:hint="Ingrese Proveedor"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/tvDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalle"
+            android:textColor="@color/textPrimary" />
+
+        <EditText
+            android:id="@+id/etDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ems="10"
+            android:hint="Ingrese Detalle"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/tvExcepcional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Servicio Excepcional"
+            android:textColor="@color/textPrimary" />
+
+        <EditText
+            android:id="@+id/etDetalle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:ems="10"
+            android:hint="Ingrese Detalle"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbRealizado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/primary"
+                android:gravity="start|center_vertical"
+                android:text="Realizado"
+                android:textColor="@color/textPrimary" />
+
+            <CheckBox
+                android:id="@+id/cbEstado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/primary"
+                android:gravity="start|center_vertical"
+                android:text="Estado"
+                android:textColor="@color/textPrimary" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="85dp">
+
+            <Button
+                android:id="@+id/bCrear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:text="Crear" />
+
+            <Button
+                android:id="@+id/bEditar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:text="Editar"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </LinearLayout>
+</ScrollView>
