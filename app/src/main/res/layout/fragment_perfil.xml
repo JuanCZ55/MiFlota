@@ -1,13 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.perfil.PerfilFragment">
+    android:background="@color/background"
+    android:fillViewport="true">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".ui.perfil.PerfilFragment">
 
-</FrameLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="3dp">
+
+            <ImageView
+                android:id="@+id/ivPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:textColor="@color/textPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:hint="Tu nombre"
+            android:inputType="textPersonName"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apellido"
+            android:textColor="@color/textPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:hint="Tu apellido"
+            android:inputType="textPersonName"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Nacimiento"
+            android:textColor="@color/textPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etFechaNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:hint="DD/MM/AAAA"
+            android:inputType="date"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DNI"
+            android:textColor="@color/textPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etDNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:hint="45789652"
+            android:inputType="number"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/textPrimary"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/primary"
+            android:hint="correo@ejemplo.com"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/hint" />
+
+
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="85dp"
+            android:layout_marginBottom="8dp"
+            android:paddingVertical="15dp"
+
+            android:text="Editar"
+            android:textColor="@color/textPrimary"
+            app:backgroundTint="@color/primary" />
+
+        <Button
+            android:id="@+id/btnCambiarPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="85dp"
+            android:paddingVertical="15dp"
+            android:text="Cambiar Contraseña"
+
+            android:textColor="@color/textPrimary"
+            app:backgroundTint="@color/primary" />
+
+    </LinearLayout>
+</ScrollView>
