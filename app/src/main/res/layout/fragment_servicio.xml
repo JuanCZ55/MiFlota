@@ -66,7 +66,7 @@
                 android:buttonTint="@color/primary"
                 android:text="Aceite"
                 android:textColor="@color/textPrimary"
-                
+
                 />
 
             <CheckBox
@@ -245,6 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
+                android:paddingVertical="15dp"
                 android:text="Crear" />
 
             <Button
@@ -252,6 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
+                android:paddingVertical="15dp"
                 android:text="Editar"
                 android:visibility="gone" />
         </FrameLayout>

@@ -1,13 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.servicioLista.ServicioListaFragment">
+    android:background="@color/background"
+    tools:context=".ui.vehiculoLista.VehiculoListaFragment">
 
-    <TextView
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tgFiltros1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="transparent"
+        app:checkedButton="@+id/btnTodos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTodos"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:text="Todos"
+            android:textColor="@color/textPrimary"
+            app:rippleColor="@color/primary"
+            app:strokeColor="@color/primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPropio"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background"
+            android:text="Propio"
+            android:textColor="@color/textPrimary"
+            app:rippleColor="@color/primary"
+            app:strokeColor="@color/primary" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tgFiltros2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:checkedButton="@+id/bAlta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tgFiltros1"
+        app:singleSelection="true"
+        android:background="transparent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bAlta"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:text="Alta"
+            android:textColor="@color/textPrimary"
+            app:rippleColor="@color/primary"
+            app:strokeColor="@color/primary"
+
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bBaja"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background"
+            android:text="Baja"
+            android:textColor="@color/textPrimary"
+            app:rippleColor="@color/primary"
+            app:strokeColor="@color/primary" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVehiculos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tgFiltros2"
+        tools:listitem="@android:layout/simple_list_item_1" />
 
-</FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarVehiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Crear"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/primary"
+        app:tint="@color/textPrimary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
