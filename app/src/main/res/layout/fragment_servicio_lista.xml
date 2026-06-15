@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="transparent"
         app:checkedButton="@+id/btnTodos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tgFiltros1"
-        app:singleSelection="true"
-        android:background="transparent">
+        app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bAlta"
@@ -82,7 +80,7 @@
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVehiculos"
+        android:id="@+id/rvServicios"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -90,7 +88,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tgFiltros2"
-        tools:listitem="@android:layout/simple_list_item_1" />
+        tools:listitem="@android:layout/simple_list_item_1"
+        android:layout_marginBottom="40dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregarVehiculo"
