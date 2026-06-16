@@ -1,6 +1,8 @@
 package com.supra.miflota.data.models;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
     private int idService;
     private boolean bujias;
     private boolean bombaCombustible;
@@ -21,17 +23,12 @@ public class Service {
     private String detalle;
     private String fecha;
     private int idVehiculo;
-    //private Vehiculo vehiculo;
+    private Vehiculo vehiculo;
     private boolean estado;
 
     public Service() {
     }
-    public Service(int kmService, String fecha, String proveedor, boolean excepcional) {
-        this.kmService = kmService;
-        this.fecha = fecha;
-        this.proveedor = proveedor;
-        this.excepcional = excepcional;
-    }
+
     public Service(boolean aceite, boolean filtroDeAceite, boolean bombaAceite, boolean filtroDeAire, boolean filtroDeCombustible, boolean bombaCombustible, boolean alineoBalanceo, boolean bombaAgua, boolean correaPolyV, boolean correaDentada, boolean bujias, int kmService, boolean excepcional, String servicioExcepcional, String proveedor, int idVehiculo, String detalle, String fecha, boolean realizado, boolean estado) {
         this.aceite = aceite;
         this.filtroDeAceite = filtroDeAceite;
@@ -215,13 +212,13 @@ public class Service {
         this.idVehiculo = idVehiculo;
     }
 
-//    public Vehiculo getVehiculo() {
-//        return vehiculo;
-//    }
-//
-//    public void setVehiculo(Vehiculo vehiculo) {
-//        this.vehiculo = vehiculo;
-//    }
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     public boolean isEstado() {
         return estado;
