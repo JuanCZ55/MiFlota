@@ -48,6 +48,7 @@ public class VehiculoListarAdapter extends RecyclerView.Adapter<VehiculoListarAd
             public void onClick(View view) {
                 if(listener != null){
                     listener.onItemClick(vehiculo);
+
                 }
             }
         });
