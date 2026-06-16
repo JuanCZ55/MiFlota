@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_vehiculo_lista">
+
+    <fragment
+        android:id="@+id/nav_vehiculo_lista"
+        android:name="com.supra.miflota.ui.vehiculoLista.VehiculoListaFragment"
+        android:label="Lista de Vehiculos"
+        tools:layout="@layout/fragment_vehiculo_lista" >
+        <action
+            android:id="@+id/action_vehiculo_lista_to_nav_vehiculo"
+            app:destination="@id/nav_vehiculo" />
+        <action
+            android:id="@+id/action_nav_vehiculo_lista_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_vehiculo"
+        android:name="com.supra.miflota.ui.vehiculo.VehiculoFragment"
+        android:label="Detalle del Vehiculo"
+        tools:layout="@layout/fragment_vehiculo">
+        <action
+            android:id="@+id/action_nav_vehiculo_to_nav_kilometraje_lista"
+            app:destination="@id/nav_kilometraje_lista" />
+        <action
+            android:id="@+id/action_nav_vehiculo_to_nav_revision_lista"
+            app:destination="@id/nav_revision_lista" />
+        <action
+            android:id="@+id/action_nav_vehiculo_to_nav_servicio_lista"
+            app:destination="@id/nav_servicio_lista" />
+        <action
+            android:id="@+id/action_nav_vehiculo_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
+        <action
+            android:id="@+id/action_nav_vehiculo_to_nav_logout"
+            app:destination="@id/nav_logout" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_kilometraje_lista"
+        android:name="com.supra.miflota.ui.kilometrajeLista.KilometrajeListaFragment"
+        android:label="Kilometraje"
+        tools:layout="@layout/fragment_kilometraje_lista" />
+
+    <fragment
+        android:id="@+id/nav_revision_lista"
+        android:name="com.supra.miflota.ui.revisionLista.RevisionListaFragment"
+        android:label="Revisiones"
+        tools:layout="@layout/fragment_revision_lista" />
+
+    <fragment
+        android:id="@+id/nav_servicio_lista"
+        android:name="com.supra.miflota.ui.servicioLista.ServicioListaFragment"
+        android:label="Servicios"
+        tools:layout="@layout/fragment_servicio_lista" />
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.supra.miflota.ui.perfil.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.supra.miflota.ui.logout.LogoutFragment"
+        android:label="Cerrar Sesión"
+        tools:layout="@layout/fragment_logout" />
+
+</navigation>
