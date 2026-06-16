@@ -1,9 +1,10 @@
 package com.supra.miflota.data.models;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Vehiculo {
+public class Vehiculo implements Serializable {
     private int idVehiculo;
     private String marca;
     private String modelo;

@@ -15,12 +15,8 @@ import retrofit2.http.Query;
 public interface VehiculoApiService {
 
 
-    @GET("vehiculos")
-    Call<PagedResponse<Vehiculo>> obtenerVehiculos(
-            @Query("nroPagina") int nroPagina,
-            @Query("tamanoPagina") int tamanoPagina,
-            @Query("estado") Boolean estado
-    );
+    @GET("vehiculos/notPaginated")
+    Call<List<Vehiculo>> obtenerVehiculos();
 
     @GET("vehiculos/{id}")
     Call<Vehiculo> obtenerVehiculoPorId(

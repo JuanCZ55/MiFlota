@@ -1,5 +1,8 @@
 package com.supra.miflota.data.models;
-public class ChecklistDiario {
+
+import java.io.Serializable;
+
+public class ChecklistDiario implements Serializable {
     private int idChecklistDiario;
     private boolean faroDelanteroIzquierdo;
     private boolean faroDelanteroDerecho;

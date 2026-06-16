@@ -1,6 +1,8 @@
 package com.supra.miflota.data.models;
 
-public class RegistroKilometraje {
+import java.io.Serializable;
+
+public class RegistroKilometraje implements Serializable {
     private int idRegistroKilometraje;
     private int kilometraje;
     private String fechaRegistro;

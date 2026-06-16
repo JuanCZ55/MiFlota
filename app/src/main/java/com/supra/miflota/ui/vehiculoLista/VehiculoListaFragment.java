@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.supra.miflota.R;
+import com.supra.miflota.databinding.FragmentVehiculoListaBinding;
 
 public class VehiculoListaFragment extends Fragment {
 
-    private VehiculoListaViewModel mViewModel;
+    private VehiculoListaViewModel vehiculoListaViewModel;
+    private FragmentVehiculoListaBinding binding;
 
     public static VehiculoListaFragment newInstance() {
         return new VehiculoListaFragment();
@@ -25,14 +27,11 @@ public class VehiculoListaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vehiculo_lista, container, false);
+        vehiculoListaViewModel = new ViewModelProvider(this).get(VehiculoListaViewModel.class);
+        binding = FragmentVehiculoListaBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(VehiculoListaViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 }

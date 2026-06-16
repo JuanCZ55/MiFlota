@@ -1,9 +1,10 @@
 package com.supra.miflota.data.models;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Rol {
+public class Rol implements Serializable {
     private int idRol;
     private String nombre;
     private boolean estado;

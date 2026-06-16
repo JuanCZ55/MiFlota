@@ -1,6 +1,8 @@
 package com.supra.miflota.data.models;
 
-public class Matafuego {
+import java.io.Serializable;
+
+public class Matafuego implements Serializable {
     private int idMatafuego;
     private int nroSerie;
     private String proveedor;

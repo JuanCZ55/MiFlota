@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
+    implementation(libs.recyclerview)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

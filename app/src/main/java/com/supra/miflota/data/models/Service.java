@@ -1,6 +1,8 @@
 package com.supra.miflota.data.models;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
     private int idService;
     private boolean bujias;
     private boolean bombaCombustible;

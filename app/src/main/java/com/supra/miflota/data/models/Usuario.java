@@ -1,8 +1,9 @@
 package com.supra.miflota.data.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private int idUsuario;
     private String gmail;
     private String contrasena;

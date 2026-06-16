@@ -2,6 +2,7 @@ package com.supra.miflota.ui.login;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.supra.miflota.data.network.ApiClient;
 import com.supra.miflota.data.network.ApiResponsesHelpers.ApiErrorResponse;
 import com.supra.miflota.data.network.ApiResponsesHelpers.TokenResponse;
 import com.supra.miflota.data.network.ApiServices.AuthApiService;
+import com.supra.miflota.ui.menu.MenuActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,8 +63,9 @@ public class LoginViewModel extends AndroidViewModel {
                     }
                     ApiClient.saveToken(context, tokenResponse.getToken());
                     //Hacemos el intent y mandamos a la proxima vista
-                    String token = ApiClient.leerToken(context);
-                    errorMessage.setValue("Todo salio bien: " + token + "");
+                    Intent intent = new Intent(getApplication(), MenuActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
                 }
             }
 
