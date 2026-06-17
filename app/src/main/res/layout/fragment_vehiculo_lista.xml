@@ -36,7 +36,7 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center"
-                android:background="transparent"
+                android:background="@android:color/transparent"
 
                 android:contentDescription="Botón para salir o cerrar sesión"
                 android:src="@drawable/outline_exit_to_app_24"

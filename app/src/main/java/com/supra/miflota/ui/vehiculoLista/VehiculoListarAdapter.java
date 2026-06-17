@@ -56,7 +56,7 @@ public class VehiculoListarAdapter extends RecyclerView.Adapter<VehiculoListarAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaVehiculos.size();
     }
 
     public class ViewHolderVehiculo extends RecyclerView.ViewHolder{

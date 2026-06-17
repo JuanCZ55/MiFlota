@@ -8,6 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,16 +36,22 @@ public class VehiculoListaFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         vehiculoListaViewModel = new ViewModelProvider(this).get(VehiculoListaViewModel.class);
         binding = FragmentVehiculoListaBinding.inflate(inflater, container, false);
+        binding.rvListadoVehiculos.setLayoutManager(new LinearLayoutManager(getContext()));
+
         vehiculoListaViewModel.getMutableLiveDataListaVehiculos().observe(getViewLifecycleOwner(), new Observer<List<Vehiculo>>() {
             @Override
             public void onChanged(List<Vehiculo> vehiculos) {
                 VehiculoListarAdapter adapter = new VehiculoListarAdapter(vehiculos, getLayoutInflater(), new VehiculoListarAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Vehiculo vehiculo) {
-
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("vehiculo", vehiculo);
+                        Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo,bundle);
                     }
                 });
+                binding.rvListadoVehiculos.setAdapter(adapter);
             }
+
         });
         vehiculoListaViewModel.cargarListadoDeVehiculos();
         return binding.getRoot();
