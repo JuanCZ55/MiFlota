@@ -12,26 +12,44 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.supra.miflota.R;
+import com.supra.miflota.databinding.FragmentRevisionBinding;
 
 public class RevisionFragment extends Fragment {
+    private FragmentRevisionBinding binding;
 
-    private RevisionViewModel mViewModel;
+    private RevisionViewModel viewModel;
 
     public static RevisionFragment newInstance() {
         return new RevisionFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_revision, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentRevisionBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(this).get(RevisionViewModel.class);
+
+        Bundle bundle = getArguments();
+
+        viewModel.getRevisionMutable().observe(getViewLifecycleOwner(), checklistDiario -> {
+            binding.tvIdRevision.setText(String.valueOf(checklistDiario.getIdChecklistDiario()));
+            binding.swEstado.setChecked(checklistDiario.isEstado());
+        });
+
+
+
+
+
+
+
+
+
+        return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RevisionViewModel.class);
+
         // TODO: Use the ViewModel
     }
 
