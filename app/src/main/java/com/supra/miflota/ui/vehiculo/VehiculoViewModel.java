@@ -2,54 +2,58 @@ package com.supra.miflota.ui.vehiculo;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.supra.miflota.data.models.Vehiculo;
 
 public class VehiculoViewModel extends AndroidViewModel {
-    private MutableLiveData<Vehiculo> vehiculoMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
-    private Context context;
+    private MutableLiveData<Vehiculo> vehiculoMutable;
+    private MutableLiveData<String> mensajeError;
 
     public VehiculoViewModel(@NonNull Application application) {
         super(application);
-        context = application.getApplicationContext();
+        mensajeError = new MutableLiveData<>();
+        vehiculoMutable = new MutableLiveData<>();
+    }
+    public LiveData<Vehiculo> getVehiculoMutable(){
+        return vehiculoMutable;
     }
 
-    public LiveData<Vehiculo> getVehiculoMutableLiveData() {
-        return vehiculoMutableLiveData;
+    public LiveData<String> getMensajeError(){
+        return mensajeError;
     }
 
-    public void setVehiculoMutableLiveData(Vehiculo vehiculoMutableLiveDataParam) {
-        vehiculoMutableLiveData.setValue(vehiculoMutableLiveDataParam);
-    }
 
-    public LiveData<String> getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage.setValue(errorMessage);
-    }
-
-    public void getVehiculo(Bundle bundle){
-        if(bundle == null){
-            errorMessage.setValue("No se envio el vehiculo");
+    /**
+     * Carga los datos del vehiculo en el LiveData vehiculoMutable.
+     * Si ocurre un error, se actualiza el LiveData mensajeError.
+     * @param bundle Datos del vehiculo.
+    * */
+    public void cargarVehiculo(Bundle bundle){
+        if (bundle == null || !bundle.containsKey("vehiculo")) {
+            mensajeError.setValue("No se pudo cargar la información del vehiculo.");
             return;
         }
-        Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("vehiculo");
-        if(vehiculo == null){
-            errorMessage.setValue("No se envio el vehiculo");
+
+        Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("Vehiculo");
+        if (vehiculo == null) {
+            mensajeError.setValue("No se pudo cargar la información del vehiculo.");
             return;
         }
-        vehiculoMutableLiveData.setValue(vehiculo);
-    }
 
+        SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
+        pref.edit()
+                .putInt("id_vehiculo", vehiculo.getIdVehiculo())
+                .putString("patente", vehiculo.getPatente())
+                .putString("marca", vehiculo.getMarca())
+                .putString("modelo", vehiculo.getModelo())
+                .apply();
+
+        vehiculoMutable.postValue(vehiculo);
+    }
 }
