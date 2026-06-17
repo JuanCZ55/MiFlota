@@ -51,7 +51,11 @@
         android:id="@+id/nav_revision_lista"
         android:name="com.supra.miflota.ui.revisionLista.RevisionListaFragment"
         android:label="Revisiones"
-        tools:layout="@layout/fragment_revision_lista" />
+        tools:layout="@layout/fragment_revision_lista">
+        <action
+            android:id="@+id/action_nav_revision_lista_to_nav_revision"
+            app:destination="@id/nav_revision" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_servicio_lista"
@@ -68,5 +72,10 @@
         android:name="com.supra.miflota.ui.logout.LogoutFragment"
         android:label="Cerrar Sesión"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_revision"
+        android:name="com.supra.miflota.ui.revision.RevisionFragment"
+        android:label="fragment_revision"
+        tools:layout="@layout/fragment_revision" />
 
 </navigation>
