@@ -40,7 +40,7 @@ public class VehiculoViewModel extends AndroidViewModel {
             return;
         }
 
-        Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("Vehiculo");
+        Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("vehiculo");
         if (vehiculo == null) {
             mensajeError.setValue("No se pudo cargar la información del vehiculo.");
             return;
