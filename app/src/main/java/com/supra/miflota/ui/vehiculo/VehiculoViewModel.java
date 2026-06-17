@@ -3,9 +3,11 @@ package com.supra.miflota.ui.vehiculo;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -21,21 +23,22 @@ public class VehiculoViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<Vehiculo> getVehiculoMutableLiveData() {
+    public LiveData<Vehiculo> getVehiculoMutableLiveData() {
         return vehiculoMutableLiveData;
     }
 
-    public void setVehiculoMutableLiveData(MutableLiveData<Vehiculo> vehiculoMutableLiveData) {
-        this.vehiculoMutableLiveData = vehiculoMutableLiveData;
+    public void setVehiculoMutableLiveData(Vehiculo vehiculoMutableLiveDataParam) {
+        vehiculoMutableLiveData.setValue(vehiculoMutableLiveDataParam);
     }
 
-    public MutableLiveData<String> getErrorMessage() {
+    public LiveData<String> getErrorMessage() {
         return errorMessage;
     }
 
-    public void setErrorMessage(MutableLiveData<String> errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage.setValue(errorMessage);
     }
+
     public void getVehiculo(Bundle bundle){
         if(bundle == null){
             errorMessage.setValue("No se envio el vehiculo");
