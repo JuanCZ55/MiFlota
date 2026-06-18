@@ -27,7 +27,8 @@ public interface RegistrosKmApiService {
     @GET("api/registro-kilometraje")
     Call<List<RegistroKilometraje>> obtenerListadoDeRegistros(
             @Query("misRegistros") boolean misRegistros,
-            @Query("estado") boolean estado
+            @Query("estado") boolean estado,
+            @Query("idVehiculo") int idVehiculo
     );
 
     @GET("api/registro-kilometraje/latest/{idVehiculo}")

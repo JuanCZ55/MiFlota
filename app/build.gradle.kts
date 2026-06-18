@@ -53,7 +53,9 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+    implementation("com.github.AAChartModel:AAChartCore:-SNAPSHOT")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }

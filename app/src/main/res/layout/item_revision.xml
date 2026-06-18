@@ -45,7 +45,7 @@
 
         <!-- Fecha con Icono de Calendario -->
         <TextView
-            android:id="@+id/tvFecha"
+            android:id="@+id/tvRegistrosKmItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -61,7 +61,7 @@
 
         <!-- Título Resumen -->
         <TextView
-            android:id="@+id/tvTituloResumen"
+            android:id="@+id/tvResumenKilometraje"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -70,7 +70,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFecha" />
+            app:layout_constraintTop_toBottomOf="@id/tvRegistrosKmItem" />
 
         <!-- Fila de Categorías (Iluminación, Líquidos, Seguridad) -->
         <LinearLayout
@@ -81,7 +81,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@+id/ivArrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTituloResumen">
+            app:layout_constraintTop_toBottomOf="@id/tvResumenKilometraje">
 
             <TextView
                 android:id="@+id/tvIluminacion"

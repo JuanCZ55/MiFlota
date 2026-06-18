@@ -71,8 +71,7 @@ public class LoginViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                errorMessage.setValue("Error de conexión: " + t.getMessage());
-                Log.d("AuthError: ", t.getMessage());
+                errorMessage.setValue("Error de conexión con el Servidor " );
             }
         });
     }
