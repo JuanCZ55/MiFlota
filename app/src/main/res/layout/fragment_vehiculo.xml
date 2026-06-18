@@ -1,189 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.vehiculo.VehiculoFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/layoutForm"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <EditText
-            android:id="@+id/editTextText9"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="611dp" />
-
+        <!-- SECCIÓN: IDENTIFICACIÓN -->
         <TextView
-            android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="N° Motor"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="592dp" />
+            android:text="Patente"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="4dp" />
 
         <EditText
-            android:id="@+id/editTextText8"
-            android:layout_width="144dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="205dp"
-            tools:layout_editor_absoluteY="451dp" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Auxilio"
-            tools:layout_editor_absoluteX="205dp"
-            tools:layout_editor_absoluteY="432dp" />
-
-        <EditText
-            android:id="@+id/editTextText6"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="539dp" />
+            android:id="@+id/etPatente"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:enabled="false"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/textPrimary" />
 
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="N° Chasis"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="520dp" />
-
-        <EditText
-            android:id="@+id/editTextText5"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="358dp" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Color"
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="339dp" />
-
-        <EditText
-            android:id="@+id/editTextText4"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="285dp" />
-
-        <TextView
-            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Marca"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="266dp" />
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="4dp" />
 
         <EditText
-            android:id="@+id/editTextText3"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
+            android:id="@+id/etMarca"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:enabled="false"
+            android:inputType="textCapWords"
+            android:textColor="@color/textPrimary" />
 
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="206dp" />
+        <!-- FILA: AÑO Y COLOR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="16dp">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Año"
+                    android:textSize="14sp"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/etAnio"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/primary"
+                    android:enabled="false"
+                    android:inputType="number"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Color"
+                    android:textSize="14sp"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/etColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/primary"
+                    android:enabled="false"
+                    android:inputType="textCapWords"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN: SERIALES -->
         <TextView
-            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Año"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="187dp" />
+            android:text="Número de Chasis"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="4dp" />
 
         <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="130dp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Modelo"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="111dp" />
+            android:id="@+id/etNumeroChasis"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:enabled="false"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/textPrimary" />
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matricula"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="26dp" />
+            android:text="Número de Motor"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="4dp" />
 
         <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="365dp"
-            android:layout_height="46dp"
+            android:id="@+id/etNumeroMotor"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
+            android:enabled="false"
+            android:inputType="textCapCharacters"
+            android:textColor="@color/textPrimary" />
 
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="45dp" />
-
-        <EditText
-            android:id="@+id/editTextText7"
-            android:layout_width="144dp"
-            android:layout_height="46dp"
-
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="451dp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
+        <!-- FILA: NEUMÁTICOS Y AUXILIOS -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Neumaticos"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="432dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="24dp">
 
-</ScrollView>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cant. Neumáticos"
+                    android:textSize="14sp"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/etCantNeumaticos"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/primary"
+                    android:enabled="false"
+                    android:inputType="number"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cant. Auxilios"
+                    android:textSize="14sp"
+                    android:textColor="@color/textSecondary"
+                    android:layout_marginBottom="4dp" />
+                <EditText
+                    android:id="@+id/etCantAuxilios"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/primary"
+                    android:enabled="false"
+                    android:inputType="number"
+                    android:textColor="@color/textPrimary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BOTÓN ACCIÓN -->
+        <Button
+            android:id="@+id/btnMatafuego"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Detalle del Matafuego"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/textPrimary"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

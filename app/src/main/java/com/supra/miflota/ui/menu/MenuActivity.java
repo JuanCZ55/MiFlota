@@ -34,6 +34,7 @@ public class MenuActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
             R.id.nav_vehiculo,
             R.id.nav_kilometraje_lista,
+            R.id.nav_perfil,
             R.id.nav_revision_lista,
             R.id.nav_servicio_lista
         ).setOpenableLayout(binding.drawerLayout).build();
@@ -50,6 +51,7 @@ public class MenuActivity extends AppCompatActivity {
             if (id == R.id.nav_vehiculo || id == R.id.nav_kilometraje_lista || id == R.id.nav_revision_lista || id == R.id.nav_servicio_lista) {
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
                 if (getSupportActionBar() != null) {
+                    getSupportActionBar().show();
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
             }
@@ -57,6 +59,7 @@ public class MenuActivity extends AppCompatActivity {
             else if (id == R.id.nav_vehiculo_lista) {
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 if (getSupportActionBar() != null) {
+                    getSupportActionBar().hide();
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
             }
@@ -64,6 +67,7 @@ public class MenuActivity extends AppCompatActivity {
             else {
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 if (getSupportActionBar() != null) {
+                    getSupportActionBar().show();
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
             }
