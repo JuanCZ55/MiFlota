@@ -16,6 +16,7 @@ import com.supra.miflota.data.models.Vehiculo;
 import com.supra.miflota.data.network.ApiClient;
 import com.supra.miflota.data.network.ApiServices.RevisionApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -127,7 +128,7 @@ public class RevisionListaViewModel extends AndroidViewModel {
                     return;
                 }
 
-                revisionListMutable.postValue(revisionList);
+                revisionListMutable.postValue(new ArrayList<>(revisionList));
             }
 
             @Override

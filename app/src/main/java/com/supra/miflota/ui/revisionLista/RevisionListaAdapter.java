@@ -55,57 +55,56 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
         // Colores
         int colorError = ContextCompat.getColor(holder.itemView.getContext(), R.color.error);
         int colorWarning = ContextCompat.getColor(holder.itemView.getContext(), R.color.warning);
-
+        int colorOk = ContextCompat.getColor(holder.itemView.getContext(), R.color.success);
 
         // Iluminacion
-        if(!revision.isFaroDelanteroIzquierdo() && !revision.isFaroDelanteroDerecho()
-            && !revision.isFaroTraseroIzquierdo() && !revision.isFaroTraseroDerecho()) {
-            holder.ilumniacion.setTextColor(colorError);
-            holder.ilumniacion.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
-        } else if (!revision.isFaroDelanteroIzquierdo() || !revision.isFaroDelanteroDerecho()
-                || !revision.isFaroTraseroIzquierdo() || !revision.isFaroTraseroDerecho()){
-            holder.ilumniacion.setTextColor(colorWarning);
-            holder.ilumniacion.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
-        }
+        actualizarEstadoComponente(
+                holder.ilumniacion,
+                colorError,
+                colorWarning,
+                colorOk,
+                (revision.isFaroDelanteroIzquierdo() ? 1 : 0 ) +
+                        (revision.isFaroDelanteroDerecho() ? 1 : 0 ) +
+                        (revision.isFaroTraseroIzquierdo() ? 1 : 0 ) +
+                        (revision.isFaroTraseroDerecho()? 1 : 0 ),
+                4
+        );
+
 
         // Liquidos
-        if(!revision.isLiquidoFrenos() &&
-                !revision.isNivelAceite() &&
-                !revision.isNivelRefrigerante() &&
-                !revision.isNivelAguaParabrisas()){
-            holder.liquidos.setTextColor(colorError);
-            holder.liquidos.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
-
-        }else if (!revision.isLiquidoFrenos() ||
-                !revision.isNivelAceite() ||
-                !revision.isNivelRefrigerante() ||
-                !revision.isNivelAguaParabrisas()){
-            holder.liquidos.setTextColor(colorWarning);
-            holder.liquidos.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
-
-        }
+        actualizarEstadoComponente(
+                holder.liquidos,
+                colorError,
+                colorWarning,
+                colorOk,
+                (revision.isLiquidoFrenos() ? 1 : 0 ) +
+                        (revision.isNivelAceite() ? 1 : 0 ) +
+                        (revision.isNivelRefrigerante() ? 1 : 0 ) +
+                        (revision.isNivelAguaParabrisas()? 1 : 0 ),
+                4
+        );
 
 
         // Seguridad
-        if (!revision.isPresionNeumaticos() &&
-                !revision.isNivelFrenos() &&
-                !revision.isMatafuegoVigente()){
-            holder.seguridad.setTextColor(colorError);
-            holder.seguridad.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
-
-        } else if (!revision.isPresionNeumaticos() ||
-                !revision.isNivelFrenos() ||
-                !revision.isMatafuegoVigente()) {
-            holder.seguridad.setTextColor(colorWarning);
-            holder.seguridad.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
-
-        }
-
+        actualizarEstadoComponente(
+                holder.seguridad,
+                colorError,
+                colorWarning,
+                colorOk,
+                (revision.isPresionNeumaticos() ? 1 : 0 ) +
+                        (revision.isNivelFrenos() ? 1 : 0 ) +
+                        (revision.isMatafuegoVigente() ? 1 : 0 ),
+                3
+        );
 
         if (!revision.isEstado()) {
             holder.estado.setText("INACTIVO");
             holder.estado.setTextColor(colorError);
+        } else {
+            holder.estado.setText("ACTIVO");
+            holder.estado.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.success));
         }
+
 
         holder.contenedor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +114,29 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
                 }
             }
         });
+    }
+
+    /**
+     * Actualiza el estado de un componente de la vista, cambiando tanto el color del texto como el color del tinte de los iconos
+     * @param view         El TextView al que se le aplicara el color (debe contener el texto e iconos).
+     * @param colorError   Valor del color para estado critico (0 ítems correctos).
+     * @param colorWarning Valor del color para estado incompleto (algunos ítems correctos).
+     * @param colorOk  Valor del color para estado optimo (todos los ítems correctos).
+     * @param aux          Cantidad de items que pasaron la validacion en la revision.
+     * @param total        Cantidad total de ítems evaluados en esa categoroa.
+     */
+    private void actualizarEstadoComponente(TextView view, int colorError, int colorWarning, int colorOk, int aux , int total){
+        int colorFinal;
+        if(aux == 0){
+            colorFinal = colorError;
+        } else if (aux<total){
+            colorFinal = colorWarning;
+        } else {
+            colorFinal = colorOk;
+        }
+
+        view.setTextColor(colorFinal);
+        view.setCompoundDrawableTintList(ColorStateList.valueOf(colorFinal));
 
     }
 
@@ -124,7 +146,8 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
     }
 
     public void updateList(List<ChecklistDiario> nuevaLista) {
-        this.revisionList = nuevaLista;
+        this.revisionList.clear();
+        this.revisionList.addAll(nuevaLista);
         notifyDataSetChanged();
     }
 

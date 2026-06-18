@@ -85,9 +85,22 @@ public class RevisionListaFragment extends Fragment {
             }
         });
 
+        binding.flotante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                androidx.navigation.Navigation.findNavController(requireView())
+                        .navigate(R.id.nav_revision);
+            }
+        });
+
         viewModel.cargarVehiculo();
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel.dispararBusquedaRevisiones();
+    }
 
 }
