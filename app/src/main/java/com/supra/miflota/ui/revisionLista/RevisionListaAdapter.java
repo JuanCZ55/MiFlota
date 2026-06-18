@@ -58,28 +58,28 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
 
 
         // Iluminacion
-        if(revision.isFaroDelanteroIzquierdo() && revision.isFaroDelanteroDerecho()
-            && revision.isFaroTraseroIzquierdo() && revision.isFaroTraseroDerecho()) {
+        if(!revision.isFaroDelanteroIzquierdo() && !revision.isFaroDelanteroDerecho()
+            && !revision.isFaroTraseroIzquierdo() && !revision.isFaroTraseroDerecho()) {
             holder.ilumniacion.setTextColor(colorError);
             holder.ilumniacion.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
-        } else if (revision.isFaroDelanteroIzquierdo() || revision.isFaroDelanteroDerecho()
-                || revision.isFaroTraseroIzquierdo() || revision.isFaroTraseroDerecho()){
+        } else if (!revision.isFaroDelanteroIzquierdo() || !revision.isFaroDelanteroDerecho()
+                || !revision.isFaroTraseroIzquierdo() || !revision.isFaroTraseroDerecho()){
             holder.ilumniacion.setTextColor(colorWarning);
             holder.ilumniacion.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
         }
 
         // Liquidos
-        if(revision.isLiquidoFrenos() &&
-                revision.isNivelAceite() &&
-                revision.isNivelRefrigerante() &&
-                revision.isNivelAguaParabrisas()){
+        if(!revision.isLiquidoFrenos() &&
+                !revision.isNivelAceite() &&
+                !revision.isNivelRefrigerante() &&
+                !revision.isNivelAguaParabrisas()){
             holder.liquidos.setTextColor(colorError);
             holder.liquidos.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
 
-        }else if (revision.isLiquidoFrenos() ||
-                revision.isNivelAceite() ||
-                revision.isNivelRefrigerante() ||
-                revision.isNivelAguaParabrisas()){
+        }else if (!revision.isLiquidoFrenos() ||
+                !revision.isNivelAceite() ||
+                !revision.isNivelRefrigerante() ||
+                !revision.isNivelAguaParabrisas()){
             holder.liquidos.setTextColor(colorWarning);
             holder.liquidos.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
 
@@ -87,15 +87,15 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
 
 
         // Seguridad
-        if (revision.isPresionNeumaticos() &&
-                revision.isNivelFrenos() &&
-                revision.isMatafuegoVigente()){
+        if (!revision.isPresionNeumaticos() &&
+                !revision.isNivelFrenos() &&
+                !revision.isMatafuegoVigente()){
             holder.seguridad.setTextColor(colorError);
             holder.seguridad.setCompoundDrawableTintList(ColorStateList.valueOf(colorError));
 
-        } else if (revision.isPresionNeumaticos() ||
-                revision.isNivelFrenos() ||
-                revision.isMatafuegoVigente()) {
+        } else if (!revision.isPresionNeumaticos() ||
+                !revision.isNivelFrenos() ||
+                !revision.isMatafuegoVigente()) {
             holder.seguridad.setTextColor(colorWarning);
             holder.seguridad.setCompoundDrawableTintList(ColorStateList.valueOf(colorWarning));
 
