@@ -14,160 +14,111 @@
         android:id="@+id/detalle_vehiculo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin = "8dp"
-
+        android:layout_margin="8dp"
         app:cardBackgroundColor="#1A1C1E"
         app:cardCornerRadius="16dp"
         app:strokeWidth="0dp"
-        app:strokeColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detalle del vehiculo"
-                android:textColor="@color/textPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                />
+            android:orientation="horizontal"
+            android:padding="12dp">
+
             <TextView
                 android:id="@+id/tvPatente"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Patente: N/A"
-                android:layout_marginTop="2dp"
                 android:textColor="@color/textSecondary"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="start" />
+
             <TextView
                 android:id="@+id/tvMarca"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_weight="1"
                 android:text="N/A"
                 android:textColor="@color/textSecondary"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="end" />
         </LinearLayout>
-
-
-
     </com.google.android.material.card.MaterialCardView>
 
 
-    <!-- filtro -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardInfoVehiculo"
-        android:layout_width="0dp"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tgFiltros1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin = "8dp"
-
-        app:cardBackgroundColor="#1A1C1E"
-        app:cardCornerRadius="16dp"
-        app:strokeWidth="0dp"
-        app:strokeColor="@color/primary"
+        android:layout_marginTop="16dp"
+        app:checkedButton="@+id/btnTodos"
+        app:singleSelection="true"
+        app:selectionRequired="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detalle_vehiculo"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/detalle_vehiculo">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTodos"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingVertical="4dp"
-            >
+            android:text="Todos"
+            app:backgroundTint="@color/bg_toggle_selector"
+            android:textColor="@color/text_toggle_selector"
+            app:strokeColor="@color/primary"  />
 
-            <!-- Pertenece -->
-            <LinearLayout
-                android:id="@+id/lytFiltros1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal = "8dp"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:text="Mostrar"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/textSecondary"
-                    android:layout_marginEnd="8dp"
-                    />
-                <Button
-                    android:id="@+id/btnTodos"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:textAllCaps="false"
-                    android:background = "@drawable/border_azul_item"
-                    android:text="Todos"
-                    android:textColor="@color/textPrimary"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPropio"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Propio"
+            app:backgroundTint="@color/bg_toggle_selector"
+            android:textColor="@color/text_toggle_selector"
+            app:strokeColor="@color/primary" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
-                <Button
-                    android:id="@+id/btnPropio"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_azul_item"
-                    android:text="Propio"
-                    android:textAllCaps="false"
-                    android:textColor="@color/textPrimary" />
+    <!-- FILTRO 2: Alta / Baja -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tgFiltros2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:checkedButton="@+id/bAlta"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tgFiltros1">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bAlta"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Activos"
+            app:backgroundTint="@color/bg_toggle_selector"
+            android:textColor="@color/text_toggle_selector"
+            app:strokeColor="@color/primary"  />
 
-            </LinearLayout>
-
-            <!-- Estados -->
-            <LinearLayout
-                android:id="@+id/lytFiltros2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:text="Estado"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/textSecondary"
-                    android:layout_marginEnd="8dp"/>
-
-                <Button
-                    android:id="@+id/bAlta"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="Activos"
-                    android:textAllCaps="false"
-                    android:background="@drawable/border_azul_item"
-                    android:backgroundTint="@color/primary"
-                    android:textColor="@color/textPrimary"/>
-
-                <Button
-                    android:id="@+id/bBaja"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Inactivos"
-                    android:textAllCaps="false"
-                    android:background="@drawable/border_azul_item"
-                    android:textColor="@color/textPrimary" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bBaja"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Inactivos"
+            app:backgroundTint="@color/bg_toggle_selector"
+            android:textColor="@color/text_toggle_selector"
+            app:strokeColor="@color/primary" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <!-- Lista -->
     <androidx.recyclerview.widget.RecyclerView
@@ -180,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardInfoVehiculo"
+        app:layout_constraintTop_toBottomOf="@+id/tgFiltros2"
         tools:listitem="@layout/item_revision" />
 
     <!-- FAB -->
