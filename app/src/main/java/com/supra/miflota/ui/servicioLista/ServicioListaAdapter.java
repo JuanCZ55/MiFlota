@@ -19,10 +19,18 @@ import java.util.List;
 public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdapter.ViewHolerServicios> {
     private List<Service> serviceList;
     private LayoutInflater inflater;
-    public ServicioListaAdapter(List<Service> serviceList, LayoutInflater inflater) {
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Service service);
+    }
+
+    public ServicioListaAdapter(List<Service> serviceList, LayoutInflater inflater, OnItemClickListener listener) {
         this.serviceList = serviceList;
         this.inflater = inflater;
+        this.listener = listener;
     }
+
     @NonNull
     @Override
     public ViewHolerServicios onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,7 +49,11 @@ public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdap
         } else {
             holder.imagen.setVisibility(View.INVISIBLE);
         }
-
+        holder.contenedor.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(service);
+            }
+        });
     }
 
     @Override

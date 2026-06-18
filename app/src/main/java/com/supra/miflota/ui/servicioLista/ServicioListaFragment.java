@@ -9,23 +9,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.supra.miflota.R;
 import com.supra.miflota.data.models.Service;
 import com.supra.miflota.databinding.FragmentServicioListaBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioListaFragment extends Fragment {
 
-    private ServicioListaViewModel mViewModel;
+    private ServicioListaViewModel vm;
 
     private FragmentServicioListaBinding b;
 
@@ -33,32 +34,65 @@ public class ServicioListaFragment extends Fragment {
         return new ServicioListaFragment();
     }
 
+    private boolean verMisServicios = false;
+    private boolean verAlta = true;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         b = FragmentServicioListaBinding.inflate(inflater, container, false);
-        mViewModel = new ViewModelProvider(this).get(ServicioListaViewModel.class);
-        listadoHard();
+        vm = new ViewModelProvider(this).get(ServicioListaViewModel.class);
+
+        // Configurar RecyclerView
+        b.rvServicios.setLayoutManager(new LinearLayoutManager(getContext()));
 
         int colorPrimary = ContextCompat.getColor(requireContext(), R.color.primary);
         int colorBackground = ContextCompat.getColor(requireContext(), R.color.background);
 
         b.btnTodos.setOnClickListener(v -> {
+            verMisServicios = false;
             alternarColores(b.btnTodos, b.btnPropio, colorPrimary, colorBackground);
+            recargarLista();
         });
 
         b.btnPropio.setOnClickListener(v -> {
+            verMisServicios = true;
             alternarColores(b.btnPropio, b.btnTodos, colorPrimary, colorBackground);
+            recargarLista();
         });
 
         b.bAlta.setOnClickListener(v -> {
+            verAlta = true;
             alternarColores(b.bAlta, b.bBaja, colorPrimary, colorBackground);
+            recargarLista();
         });
 
         b.bBaja.setOnClickListener(v -> {
+            verAlta = false;
             alternarColores(b.bBaja, b.bAlta, colorPrimary, colorBackground);
+            recargarLista();
         });
 
+        vm.getServiceList().observe(getViewLifecycleOwner(), lista -> {
+
+            ServicioListaAdapter adapter = new ServicioListaAdapter(lista, getLayoutInflater(), service -> {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("servicio", service);
+                Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment, bundle);
+            });
+            b.rvServicios.setAdapter(adapter);
+        });
+
+        vm.getErrorMessage().observe(getViewLifecycleOwner(), msj -> {
+            Toast.makeText(getContext(), msj, Toast.LENGTH_SHORT).show();
+        });
+
+        recargarLista();
+
         return b.getRoot();
+    }
+
+    private void recargarLista() {
+        vm.listServicios(verMisServicios, verAlta);
     }
 
 
@@ -66,33 +100,4 @@ public class ServicioListaFragment extends Fragment {
         activo.setBackgroundTintList(ColorStateList.valueOf(colorPrimario));
         inactivo.setBackgroundTintList(ColorStateList.valueOf(colorFondo));
     }
-
-    private void listadoHard() {
-        RecyclerView rv = b.rvServicios;
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<Service> serviceList = new ArrayList<>();
-        Service s1 = new Service(15000, "10/06/2026", "Taller Supra", true);
-        Service s2 = new Service(30000, "12/06/2026", "Mecánica Rápida", false);
-        Service s3 = new Service(45000, "15/06/2026", "Repuestos Pepe", true);
-
-        serviceList.add(s1);
-        serviceList.add(s2);
-        serviceList.add(s3);
-
-        serviceList.add(s1);
-        serviceList.add(s2);
-        serviceList.add(s3);
-        serviceList.add(s1);
-        serviceList.add(s2);
-        serviceList.add(s3);
-        serviceList.add(s1);
-        serviceList.add(s2);
-        serviceList.add(s3);
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        ServicioListaAdapter adapter = new ServicioListaAdapter(serviceList, inflater);
-        rv.setAdapter(adapter);
-
-    }
-
-
 }
