@@ -28,7 +28,12 @@ public class Service implements Serializable {
 
     public Service() {
     }
-
+    public Service(int kmService, String proveedor, String fecha, boolean estado) {
+        this.kmService = kmService;
+        this.proveedor = proveedor;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
     public Service(boolean aceite, boolean filtroDeAceite, boolean bombaAceite, boolean filtroDeAire, boolean filtroDeCombustible, boolean bombaCombustible, boolean alineoBalanceo, boolean bombaAgua, boolean correaPolyV, boolean correaDentada, boolean bujias, int kmService, boolean excepcional, String servicioExcepcional, String proveedor, int idVehiculo, String detalle, String fecha, boolean realizado, boolean estado) {
         this.aceite = aceite;
         this.filtroDeAceite = filtroDeAceite;
