@@ -1,6 +1,8 @@
 package com.supra.miflota.ui.kilometrajeLista;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,19 +42,32 @@ public class KilometroListarAdapter extends RecyclerView.Adapter<KilometroListar
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolderKilometro holder, int position) {
+        SharedPreferences sh = holder.itemView.getContext().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
+        String patente = sh.getString("patente", "Sin patente");
+
         RegistroKilometraje registroKilometraje = registroKilometrajeList.get(position);
 
-        holder.tvPatente.setText(registroKilometraje.getVehiculo().getPatente());
-        holder.fecha.setText(registroKilometraje.getFechaRegistro());
+        holder.tvPatente.setText(patente);
+        holder.fecha.setText(registroKilometraje.getFechaRegistro().split("T")[0]);
         holder.kilometraje.setText(String.valueOf(registroKilometraje.getKilometraje()));
-        if(position > 0){
-            RegistroKilometraje registroKilometrajeAnterior = registroKilometrajeList.get(position - 1);
-            int diferencia = registroKilometraje.getKilometraje() - registroKilometrajeAnterior.getKilometraje();
-            holder.resumenKilometraje.setText("+"+ diferencia +" km desde el último registro");
-        }else{
+        if(position == registroKilometrajeList.size() - 1){
             holder.resumenKilometraje.setText("Registro inicial");
         }
-
+        if(position +1 < registroKilometrajeList.size() )
+        {
+            RegistroKilometraje registroKilometrajeAnterior =
+                    registroKilometrajeList.get(position + 1);
+            int diferencia = Math.abs(registroKilometraje.getKilometraje() - registroKilometrajeAnterior.getKilometraje());
+            holder.resumenKilometraje.setText("+"+ diferencia +" km desde el registro anterior");
+        }
+        holder.contenedor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener != null){
+                    listener.onItemClick(registroKilometraje);
+                }
+            }
+        });
 
     }
 
@@ -69,7 +84,6 @@ public class KilometroListarAdapter extends RecyclerView.Adapter<KilometroListar
     public class ViewHolderKilometro extends RecyclerView.ViewHolder {
         private ItemRegistroKilometrajeBinding binding;
         TextView tvPatente;
-
         TextView fecha;
         TextView kilometraje;
         TextView resumenKilometraje;
@@ -80,7 +94,7 @@ public class KilometroListarAdapter extends RecyclerView.Adapter<KilometroListar
             binding = ItemRegistroKilometrajeBinding.bind(itemView);
             tvPatente = binding.tvIdRevision;
             fecha = binding.tvFecha;
-            kilometraje = binding.tvUnidadKm;
+            kilometraje = binding.tvRegistrosKmItem;
             resumenKilometraje = binding.tvResumenKilometraje;
             contenedor = binding.contenedor;
         }
