@@ -20,11 +20,12 @@ public class ChecklistDiario implements Serializable {
     private int idVehiculo;
     private Vehiculo vehiculo;
     private boolean estado;
+    private boolean currentUser;
 
     public ChecklistDiario() {
     }
 
-    public ChecklistDiario(int idVehiculo, String fecha, boolean faroDelanteroIzquierdo, boolean faroDelanteroDerecho, boolean faroTraseroIzquierdo, boolean faroTraseroDerecho, boolean liquidoFrenos, boolean nivelAceite, boolean presionNeumaticos, boolean nivelFrenos, boolean matafuegoVigente, boolean nivelRefrigerante, boolean nivelAguaParabrisas, String observaciones, boolean estado) {
+    public ChecklistDiario(int idVehiculo, String fecha, boolean faroDelanteroIzquierdo, boolean faroDelanteroDerecho, boolean faroTraseroIzquierdo, boolean faroTraseroDerecho, boolean liquidoFrenos, boolean nivelAceite, boolean presionNeumaticos, boolean nivelFrenos, boolean matafuegoVigente, boolean nivelRefrigerante, boolean nivelAguaParabrisas, String observaciones, boolean estado, boolean currentUser) {
         this.idVehiculo = idVehiculo;
         this.fecha = fecha;
         this.faroDelanteroIzquierdo = faroDelanteroIzquierdo;
@@ -40,6 +41,7 @@ public class ChecklistDiario implements Serializable {
         this.nivelAguaParabrisas = nivelAguaParabrisas;
         this.observaciones = observaciones;
         this.estado = estado;
+        this.currentUser = currentUser;
     }
 
     public int getIdChecklistDiario() {
@@ -176,5 +178,37 @@ public class ChecklistDiario implements Serializable {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public boolean isCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(boolean currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    @Override
+    public String toString() {
+        return "ChecklistDiario{" +
+                "idChecklistDiario=" + idChecklistDiario +
+                ", faroDelanteroIzquierdo=" + faroDelanteroIzquierdo +
+                ", faroDelanteroDerecho=" + faroDelanteroDerecho +
+                ", faroTraseroIzquierdo=" + faroTraseroIzquierdo +
+                ", faroTraseroDerecho=" + faroTraseroDerecho +
+                ", liquidoFrenos=" + liquidoFrenos +
+                ", nivelAceite=" + nivelAceite +
+                ", presionNeumaticos=" + presionNeumaticos +
+                ", nivelFrenos=" + nivelFrenos +
+                ", nivelRefrigerante=" + nivelRefrigerante +
+                ", nivelAguaParabrisas=" + nivelAguaParabrisas +
+                ", matafuegoVigente=" + matafuegoVigente +
+                ", observaciones='" + observaciones + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", idVehiculo=" + idVehiculo +
+                ", vehiculo=" + vehiculo +
+                ", estado=" + estado +
+                ", currentUser=" + currentUser +
+                '}';
     }
 }
