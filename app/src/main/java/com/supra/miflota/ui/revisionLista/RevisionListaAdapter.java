@@ -2,7 +2,6 @@ package com.supra.miflota.ui.revisionLista;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,6 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRevision holder, int position) {
-        Log.d("revision","Adapter 01" );
         ChecklistDiario revision = revisionList.get(position);
 
         holder.code.setText("Cod: " + revision.getIdChecklistDiario());
@@ -123,6 +121,11 @@ public class RevisionListaAdapter extends RecyclerView.Adapter<RevisionListaAdap
     @Override
     public int getItemCount() {
         return revisionList != null ? revisionList.size() : 0;
+    }
+
+    public void updateList(List<ChecklistDiario> nuevaLista) {
+        this.revisionList = nuevaLista;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolderRevision extends RecyclerView.ViewHolder{
