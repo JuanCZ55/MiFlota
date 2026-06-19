@@ -43,13 +43,7 @@ public class ChecklistDiario implements Serializable {
         this.currentUser = currentUser;
     }
 
-    public boolean isCurrentUser() {
-        return currentUser;
-    }
 
-    public void setCurrentUser(boolean currentUser) {
-        this.currentUser = currentUser;
-    }
 
     public int getIdChecklistDiario() {
         return idChecklistDiario;
