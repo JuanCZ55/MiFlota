@@ -20,7 +20,7 @@ public interface ServiceApiService {
     Call<Service> crearServicio(@Body Service service);
 
     @PUT("mantenimiento/{id}")
-    Call<Void> actualizarServicio(@Path("id") int id, @Body Service service);
+    Call<Service> actualizarServicio(@Path("id") int id, @Body Service service);
 
     @GET("mantenimiento/getlistadoservicio/{idVehiculo}")
     Call<List<Service>> listadoServicios(@Path("idVehiculo") int id, @Query("misRegistros") boolean misRegistros, @Query("estado") boolean estado);

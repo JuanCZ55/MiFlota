@@ -22,6 +22,7 @@ import com.supra.miflota.R;
 import com.supra.miflota.data.models.Service;
 import com.supra.miflota.databinding.FragmentServicioListaBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioListaFragment extends Fragment {
@@ -30,9 +31,7 @@ public class ServicioListaFragment extends Fragment {
 
     private FragmentServicioListaBinding b;
 
-    public static ServicioListaFragment newInstance() {
-        return new ServicioListaFragment();
-    }
+    private ServicioListaAdapter adapter;
 
     private boolean verMisServicios = false;
     private boolean verAlta = true;
@@ -42,53 +41,65 @@ public class ServicioListaFragment extends Fragment {
         b = FragmentServicioListaBinding.inflate(inflater, container, false);
         vm = new ViewModelProvider(this).get(ServicioListaViewModel.class);
 
-        // Configurar RecyclerView
         b.rvServicios.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new ServicioListaAdapter(new ArrayList<>(), getLayoutInflater(), service -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("servicio", service);
+            Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment, bundle);
+        });
+        b.rvServicios.setAdapter(adapter);
 
         int colorPrimary = ContextCompat.getColor(requireContext(), R.color.primary);
         int colorBackground = ContextCompat.getColor(requireContext(), R.color.background);
-
+/// filtro Todos
         b.btnTodos.setOnClickListener(v -> {
             verMisServicios = false;
             alternarColores(b.btnTodos, b.btnPropio, colorPrimary, colorBackground);
             recargarLista();
         });
-
+/// filtro Mis Servicios
         b.btnPropio.setOnClickListener(v -> {
             verMisServicios = true;
             alternarColores(b.btnPropio, b.btnTodos, colorPrimary, colorBackground);
             recargarLista();
         });
-
+/// filtro alta
         b.bAlta.setOnClickListener(v -> {
             verAlta = true;
             alternarColores(b.bAlta, b.bBaja, colorPrimary, colorBackground);
             recargarLista();
         });
-
+/// filtro baja
         b.bBaja.setOnClickListener(v -> {
             verAlta = false;
             alternarColores(b.bBaja, b.bAlta, colorPrimary, colorBackground);
             recargarLista();
         });
 
+/// observer de la lista
         vm.getServiceList().observe(getViewLifecycleOwner(), lista -> {
-
-            ServicioListaAdapter adapter = new ServicioListaAdapter(lista, getLayoutInflater(), service -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("servicio", service);
-                Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment, bundle);
-            });
-            b.rvServicios.setAdapter(adapter);
+            adapter.setServiceList(lista);
         });
-
+/// mensaje de error
         vm.getErrorMessage().observe(getViewLifecycleOwner(), msj -> {
-            Toast.makeText(getContext(), msj, Toast.LENGTH_SHORT).show();
+            if (msj != null && !msj.isEmpty()) {
+                Toast.makeText(getContext(), msj, Toast.LENGTH_SHORT).show();
+                vm.clearErrorMessage();
+            }
         });
-
+        /// boton agregar
+        b.fabAgregarVehiculo.setOnClickListener(v -> {
+            Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment);
+        });
         recargarLista();
 
         return b.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recargarLista();
     }
 
     private void recargarLista() {

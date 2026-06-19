@@ -61,6 +61,14 @@ public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdap
         return serviceList.size();
     }
 
+    public void setServiceList(List<Service> serviceList) {
+        this.serviceList.clear();
+        this.serviceList.addAll(serviceList);
+
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolerServicios extends RecyclerView.ViewHolder {
         private ItemServicioBinding binding;
         ImageView imagen;

@@ -25,16 +25,43 @@ public class Service implements Serializable {
     private int idVehiculo;
     private Vehiculo vehiculo;
     private boolean estado;
+    private boolean currentUser;
 
     public Service() {
     }
+
     public Service(int kmService, String proveedor, String fecha, boolean estado) {
         this.kmService = kmService;
         this.proveedor = proveedor;
         this.fecha = fecha;
         this.estado = estado;
     }
-    public Service(boolean aceite, boolean filtroDeAceite, boolean bombaAceite, boolean filtroDeAire, boolean filtroDeCombustible, boolean bombaCombustible, boolean alineoBalanceo, boolean bombaAgua, boolean correaPolyV, boolean correaDentada, boolean bujias, int kmService, boolean excepcional, String servicioExcepcional, String proveedor, int idVehiculo, String detalle, String fecha, boolean realizado, boolean estado) {
+
+    public Service(int idService, boolean bujias, boolean bombaCombustible, boolean filtroDeAire, boolean filtroDeAceite, boolean filtroDeCombustible, boolean correaPolyV, boolean correaDentada, boolean alineoBalanceo, boolean bombaAgua, boolean bombaAceite, boolean aceite, boolean excepcional, String servicioExcepcional, boolean realizado, String proveedor, int kmService, String detalle, String fecha, int idVehiculo, boolean estado) {
+        this.idService = idService;
+        this.bujias = bujias;
+        this.bombaCombustible = bombaCombustible;
+        this.filtroDeAire = filtroDeAire;
+        this.filtroDeAceite = filtroDeAceite;
+        this.filtroDeCombustible = filtroDeCombustible;
+        this.correaPolyV = correaPolyV;
+        this.correaDentada = correaDentada;
+        this.alineoBalanceo = alineoBalanceo;
+        this.bombaAgua = bombaAgua;
+        this.bombaAceite = bombaAceite;
+        this.aceite = aceite;
+        this.excepcional = excepcional;
+        this.servicioExcepcional = servicioExcepcional;
+        this.realizado = realizado;
+        this.proveedor = proveedor;
+        this.kmService = kmService;
+        this.detalle = detalle;
+        this.fecha = fecha;
+        this.idVehiculo = idVehiculo;
+        this.estado = estado;
+    }
+
+    public Service(boolean aceite, boolean filtroDeAceite, boolean bombaAceite, boolean filtroDeAire, boolean filtroDeCombustible, boolean bombaCombustible, boolean alineoBalanceo, boolean bombaAgua, boolean correaPolyV, boolean correaDentada, boolean bujias, int kmService, boolean excepcional, String servicioExcepcional, String proveedor, int idVehiculo, String detalle, String fecha, boolean realizado, boolean estado, boolean currentUser) {
         this.aceite = aceite;
         this.filtroDeAceite = filtroDeAceite;
         this.bombaAceite = bombaAceite;
@@ -55,6 +82,7 @@ public class Service implements Serializable {
         this.fecha = fecha;
         this.realizado = realizado;
         this.estado = estado;
+        this.currentUser = currentUser;
     }
 
     public int getIdService() {
@@ -231,5 +259,13 @@ public class Service implements Serializable {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public boolean isCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(boolean currentUser) {
+        this.currentUser = currentUser;
     }
 }

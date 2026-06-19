@@ -13,6 +13,7 @@ import com.supra.miflota.data.models.Service;
 import com.supra.miflota.data.network.ApiClient;
 import com.supra.miflota.data.network.ApiServices.ServiceApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,18 +25,17 @@ public class ServicioListaViewModel extends AndroidViewModel {
     private MutableLiveData<String> errorMessage;
     private ServiceApiService serviceApiService;
 
+
     public ServicioListaViewModel(@NonNull Application application) {
         super(application);
         serviceApiService = ApiClient.getClient(application.getApplicationContext()).create(ServiceApiService.class);
     }
-
     public LiveData<String> getErrorMessage() {
         if (errorMessage == null) {
             errorMessage = new MutableLiveData<>();
         }
         return errorMessage;
     }
-
     public LiveData<List<Service>> getServiceList() {
         if (serviceList == null) {
             serviceList = new MutableLiveData<>();
@@ -44,10 +44,15 @@ public class ServicioListaViewModel extends AndroidViewModel {
     }
 
     public void listServicios(boolean misServicios, boolean estado) {
+        if (errorMessage == null) {
+            errorMessage = new MutableLiveData<>();
+        }
+        errorMessage.setValue(null);
         SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
         int idVehiculo = pref.getInt("id_vehiculo", -1);
         if (idVehiculo == -1) {
             errorMessage.setValue("No se selecciono ningun vehiculo");
+            return;
         }
         serviceApiService.listadoServicios(idVehiculo, misServicios, estado).enqueue(new Callback<List<Service>>() {
             @Override
@@ -58,10 +63,12 @@ public class ServicioListaViewModel extends AndroidViewModel {
                     return;
                 }
                 List<Service> lista = response.body();
-                if (lista == null|| lista.isEmpty()) {
+                if (lista == null || lista.isEmpty()) {
                     errorMessage.setValue("No se encontraron servicios");
+                } else {
+                    errorMessage.setValue(null);
                 }
-                serviceList.postValue(lista);
+                serviceList.postValue(new ArrayList<>(lista));
             }
 
             @Override
@@ -71,4 +78,11 @@ public class ServicioListaViewModel extends AndroidViewModel {
         });
 
     }
+
+    public void clearErrorMessage() {
+        if (errorMessage != null) {
+            errorMessage.setValue(null);
+        }
+    }
+
 }

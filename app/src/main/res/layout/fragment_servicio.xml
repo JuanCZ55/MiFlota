@@ -59,95 +59,104 @@
             android:orientation="vertical"
             android:padding="0dp">
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbAceite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Aceite"
                 android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-                />
-
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbAlineoBalanceo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Alineación y Balanceo"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaAceite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Bomba de Aceite"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaAgua"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Bomba de Agua"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaCombustible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Bomba de Combustible"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBujias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Bujias"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbCorreaDentada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Correa Dentada"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeAceite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Filtro de Aceite"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbCorreaPolyV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Correa Poly-V"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeAire"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Filtro de Aire"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeCombustible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/primary"
                 android:text="Filtro de Combustible"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
 
         </LinearLayout>
 
@@ -213,25 +222,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <CheckBox
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbRealizado"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:buttonTint="@color/primary"
                 android:gravity="start|center_vertical"
                 android:text="Realizado"
-                android:textColor="@color/textPrimary" />
-
-            <CheckBox
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.3" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbEstado"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:buttonTint="@color/primary"
+                android:checked="true"
                 android:gravity="start|center_vertical"
                 android:text="Estado"
-                android:textColor="@color/textPrimary" />
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_color"
+                app:trackTint="@color/hint" />
         </LinearLayout>
 
         <FrameLayout
@@ -246,7 +261,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
                 android:paddingVertical="15dp"
-                android:text="Crear" />
+                android:text="Crear"
+                android:textColor="@color/textPrimary" />
 
             <Button
                 android:id="@+id/bEditar"
@@ -255,6 +271,7 @@
                 android:backgroundTint="@color/primary"
                 android:paddingVertical="15dp"
                 android:text="Editar"
+                android:textColor="@color/textPrimary"
                 android:visibility="gone" />
         </FrameLayout>
 
