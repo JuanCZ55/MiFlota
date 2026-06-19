@@ -95,5 +95,9 @@
         android:name="com.supra.miflota.ui.perfil.PasswordFragment"
         android:label="fragment_password"
         tools:layout="@layout/fragment_password" />
+        android:id="@+id/nav_kilometraje"
+        android:name="com.supra.miflota.ui.kilometraje.kilometrajeFragment"
+        android:label="fragment_kilometraje"
+        tools:layout="@layout/fragment_kilometraje" />
 
 </navigation>

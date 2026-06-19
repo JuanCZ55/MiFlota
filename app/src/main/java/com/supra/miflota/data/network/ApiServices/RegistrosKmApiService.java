@@ -19,49 +19,50 @@ import retrofit2.http.Query;
 
 public interface RegistrosKmApiService {
 
-    @GET("api/registro-kilometraje/{id}")
+    @GET("registro-kilometraje/{id}")
     Call<RegistroKilometraje> obtenerRegistroPorId(
             @Path("id") int id
     );
 
-    @GET("api/registro-kilometraje")
+    @GET("registro-kilometraje")
     Call<List<RegistroKilometraje>> obtenerListadoDeRegistros(
             @Query("misRegistros") boolean misRegistros,
-            @Query("estado") boolean estado
+            @Query("estado") boolean estado,
+            @Query("idVehiculo") int idVehiculo
     );
 
-    @GET("api/registro-kilometraje/latest/{idVehiculo}")
+    @GET("registro-kilometraje/latest/{idVehiculo}")
     Call<RegistroKilometraje> obtenerUltimoRegistroPorVehiculo(
             @Path("idVehiculo") int idVehiculo
     );
 
-    @POST("api/registro-kilometraje")
+    @POST("registro-kilometraje")
     Call<RegistroKilometraje> crearRegistro(
             @Body RegistroKilometraje registro
     );
 
-    @PUT("api/registro-kilometraje/{id}")
+    @PUT("registro-kilometraje/{id}")
     Call<Void> actualizarRegistro(
             @Path("id") int id,
             @Body RegistroKilometraje registro
     );
 
-    @DELETE("api/registro-kilometraje/{id}")
+    @DELETE("registro-kilometraje/{id}")
     Call<Void> eliminarRegistro(
             @Path("id") int id
     );
 
-    @PATCH("api/registro-kilometraje/baja/{id}")
+    @PATCH("registro-kilometraje/baja/{id}")
     Call<Void> darDeBajaRegistro(
             @Path("id") int id
     );
 
-    @PATCH("api/registro-kilometraje/alta/{id}")
+    @PATCH("registro-kilometraje/alta/{id}")
     Call<Void> restaurarRegistro(
             @Path("id") int id
     );
 
-    @GET("api/registro-kilometraje/listado/{patente}")
+    @GET("registro-kilometraje/listado/{patente}")
     Call<List<KmByPatenteResponse>> obtenerRegistrosPorPatente(
             @Path("patente") String patente,
             @Query("nroPagina") int nroPagina,

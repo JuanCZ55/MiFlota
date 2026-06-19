@@ -21,7 +21,6 @@ public class ChecklistDiario implements Serializable {
     private Vehiculo vehiculo;
     private boolean estado;
     private boolean currentUser;
-
     public ChecklistDiario() {
     }
 
@@ -41,6 +40,14 @@ public class ChecklistDiario implements Serializable {
         this.nivelAguaParabrisas = nivelAguaParabrisas;
         this.observaciones = observaciones;
         this.estado = estado;
+        this.currentUser = currentUser;
+    }
+
+    public boolean isCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(boolean currentUser) {
         this.currentUser = currentUser;
     }
 

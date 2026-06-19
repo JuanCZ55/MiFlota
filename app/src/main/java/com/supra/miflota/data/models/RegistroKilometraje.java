@@ -9,15 +9,25 @@ public class RegistroKilometraje implements Serializable {
     private boolean estado;
     private int idVehiculo;
     private Vehiculo vehiculo;
-
+    private boolean currentUser;
     public RegistroKilometraje() {
     }
 
-    public RegistroKilometraje(int idVehiculo, String fechaRegistro, int kilometraje, boolean estado) {
+    public RegistroKilometraje(int idVehiculo, String fechaRegistro, int kilometraje, boolean estado, boolean currentUser) {
         this.idVehiculo = idVehiculo;
         this.fechaRegistro = fechaRegistro;
         this.kilometraje = kilometraje;
         this.estado = estado;
+        this.currentUser = currentUser;
+
+    }
+
+    public boolean isCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(boolean currentUser) {
+        this.currentUser = currentUser;
     }
 
     public int getIdRegistroKilometraje() {
