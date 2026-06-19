@@ -18,6 +18,7 @@ import com.supra.miflota.data.network.ApiServices.RevisionApiService;
 
 import java.time.Instant;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -117,12 +118,7 @@ public class RevisionViewModel extends AndroidViewModel {
 
 
     private void consultaCrearRevision(ChecklistDiario revision){
-        String token = ApiClient.leerToken(getApplication());
-        if (token == null) {
-            return;
-        }
-
-        Call<ChecklistDiario> call = revisionApiService.crearRevision(token, revision);
+        Call<ChecklistDiario> call = revisionApiService.crearRevision(revision);
         call.enqueue(new Callback<ChecklistDiario>() {
             @Override
             public void onResponse(Call<ChecklistDiario> call, Response<ChecklistDiario> response) {
@@ -176,14 +172,10 @@ public class RevisionViewModel extends AndroidViewModel {
     }
 
     private void consultarActualizarRevision(ChecklistDiario revision){
-        String token = ApiClient.leerToken(getApplication());
-        if (token == null) {
-            return;
-        }
-        Call<ChecklistDiario> call = revisionApiService.editarRevision(token, revision.getIdChecklistDiario(), revision);
-        call.enqueue(new Callback<ChecklistDiario>() {
+        Call<ResponseBody> call = revisionApiService.editarRevision(revision.getIdChecklistDiario(), revision);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ChecklistDiario> call, Response<ChecklistDiario> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(!response.isSuccessful()){
                     errorMessage.setValue("Ocurrio un error al editar la revision");
                     return;
@@ -193,14 +185,9 @@ public class RevisionViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure(Call<ChecklistDiario> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 errorMessage.setValue("Error inesperado al editar la revision");
             }
         });
     }
-
-
-
-
-
 }

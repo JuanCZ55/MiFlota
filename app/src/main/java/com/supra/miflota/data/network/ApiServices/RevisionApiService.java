@@ -4,6 +4,7 @@ import com.supra.miflota.data.models.ChecklistDiario;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,20 +20,17 @@ public interface RevisionApiService {
     Call<List<ChecklistDiario>> listaRevisiones(
             @Path("idVehiculo") int idVehiculo,
             @Query("misRegistros") boolean misRegistros,
-            @Query("estado") boolean estado,
-            @Header("Authorization") String token
+            @Query("estado") boolean estado
     );
 
     @POST("checklist")
     Call<ChecklistDiario> crearRevision(
-            @Header("Authorization") String token,
             @Body ChecklistDiario revision
     );
 
-    @PUT("checklist/{idChecklistDiario}")
-    Call<ChecklistDiario> editarRevision(
-            @Header("Authorization") String token,
-            @Path("idChecklistDiario") int idChecklistDiario,
+    @PUT("checklist/{id}")
+    Call<ResponseBody> editarRevision(
+            @Path("id") int id,
             @Body ChecklistDiario revision
     );
 

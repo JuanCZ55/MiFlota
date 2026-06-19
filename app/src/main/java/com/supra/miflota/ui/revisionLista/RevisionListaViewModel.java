@@ -107,12 +107,8 @@ public class RevisionListaViewModel extends AndroidViewModel {
      *               isActive: true para revisiones activas, false para inactivas .
      */
     public void cargarRevisiones (int idVehiculo, Status status){
-        String token = ApiClient.leerToken(getApplication());
-        if (token == null) {
-            return;
-        }
 
-        Call<List<ChecklistDiario>> call = revisionApiService.listaRevisiones(idVehiculo, status.isAll(), status.isActive(), token);
+        Call<List<ChecklistDiario>> call = revisionApiService.listaRevisiones(idVehiculo, status.isAll(), status.isActive());
 
         call.enqueue(new Callback<List<ChecklistDiario>>() {
             @Override
