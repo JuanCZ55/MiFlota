@@ -30,7 +30,7 @@ public class VehiculoFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(VehiculoViewModel.class);
         Bundle bundle = getArguments();
 
-        viewModel.cargarVehiculoByApi(bundle);
+        viewModel.cargarVehiculo(bundle);
 
 
 

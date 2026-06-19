@@ -18,7 +18,7 @@ public interface VehiculoApiService {
     @GET("vehiculos/notPaginated")
     Call<List<Vehiculo>> obtenerVehiculos();
 
-    @GET("vehiculos/obtener/{id}")
+    @GET("vehiculos/{id}")
     Call<Vehiculo> obtenerVehiculoPorId(
             @Path("id") int id
     );
