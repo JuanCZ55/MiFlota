@@ -135,59 +135,9 @@ public class KilometrajeListaFragment extends Fragment {
                 "rgba(0, 134, 255, 1f)",
                 "rgba(0, 194, 255, 1f)"
         );
-//        String[] fechas2 = new String[]{
-//                "2026-06-10",
-//                "2026-06-11",
-//                "2026-06-12",
-//                "2026-06-13",
-//                "2026-06-14",
-//                "2026-06-15",
-//                "2026-06-16",
-//                "2026-06-17",
-//                "2026-06-18",
-//                "2026-06-19"
-//        };
-//
-//        Object[] kilometrajes = new Object[]{
-//                15200,
-//                15245,
-//                15310,
-//                15390,
-//                15415,
-//                15500,
-//                15580,
-//                15720,
-//                15800,
-//                15950
-//        };
-
         AAChartView aaChartView = binding.grafico;
-//        AAChartModel aaChartModel = new AAChartModel()
-//                .chartType(AAChartType.Spline)
-//                .title("Registros de kilometraje")
-//                .backgroundColor("#101114")
-//                .markerSymbolStyle(AAChartSymbolStyleType.InnerBlank)
-//                .markerSymbol(AAChartSymbolType.Circle)
-//                .categories(fechas)
-//                .yAxisLineWidth(0)
-//                .animationDuration(2)
-//                .yAxisMin(0)
-//                .xAxisTickInterval(1)
-//                .legendEnabled(false)
-//                .series(new AASeriesElement[]{
-//                        new AASeriesElement()
-//                                .name("Registro")
-//                                .lineWidth(3.0)
-//                                .color(AARgba(0,135,255,1.0f))
-//                                .fillColor(linearGradientColor)
-//                                .data(valores)
-//
-//                });
-//        AAOptions aaOptions = aaChartModel.aa_toAAOptions();
-//        aaOptions.xAxis.tickmarkPlacement("on").minPadding(0f).maxPadding(0f).startOnTick(true).endOnTick(true);
-//        aaChartView.aa_drawChartWithChartOptions(aaOptions);
+
         AAChartModel aaChartModel = new AAChartModel()
-                .title("Registros de kilometraje")
                 .chartType(AAChartType.Spline)
                 .categories(fechas)
                 .markerRadius(4.0)
