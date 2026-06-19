@@ -1,7 +1,5 @@
 package com.supra.miflota.ui.kilometraje;
 
-import static android.view.View.GONE;
-
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.supra.miflota.R;
 import com.supra.miflota.data.models.RegistroKilometraje;
 import com.supra.miflota.databinding.FragmentKilometrajeBinding;
 

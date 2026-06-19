@@ -31,15 +31,18 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+        /// Cabecera del menu lateral
         View headerView = binding.navView.getHeaderView(0);
         TextView name = headerView.findViewById(R.id.nameLabelHeader);
         TextView mail = headerView.findViewById(R.id.tvMailHeader);
+
+        /// Cargar datos de la cabecera
         viewModel.getUsuario().observe(this, usuario -> {
             name.setText(usuario.getPersona().getNombre().concat(" ").concat(usuario.getPersona().getApellido()));
             mail.setText(usuario.getGmail());
         });
 
-
+        /// Recargar email del vm compartido
         sidebarViewModel.getUserEmail().observe(this, email -> {
             mail.setText(email);
         });

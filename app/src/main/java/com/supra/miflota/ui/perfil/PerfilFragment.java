@@ -54,6 +54,7 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        /// Recargar email del vm compartido
         vm.getEmail().observe(getViewLifecycleOwner(), email -> {
             siderVW.setUserEmail(email);
         });

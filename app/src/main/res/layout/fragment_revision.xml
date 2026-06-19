@@ -311,6 +311,7 @@
                 android:textColor="@color/textPrimary"
                 app:thumbTint="@color/switch_thumb_tint"
                 app:trackTint="@color/switch_track_tint"
+                android:checked="true"
                 />
 
             <!-- BOTÓN GUARDAR -->

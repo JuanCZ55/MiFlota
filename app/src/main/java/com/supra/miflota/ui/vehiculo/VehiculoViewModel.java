@@ -107,7 +107,7 @@ public class VehiculoViewModel extends AndroidViewModel {
                 return;
             }
 
-        }catch (ClassCastException e){
+        }catch (Exception e){
             mensajeError.setValue("No se pudo cargar el vehiculo por su identificador.");
             return;
         }

@@ -1,11 +1,5 @@
 package com.supra.miflota.data.network.ApiServices;
 
-// Asegúrate de importar tus DTOs y clases de respuesta
-// import com.supra.miflota.data.models.LoginDto;
-// import com.supra.miflota.data.models.RegisterDto;
-// import com.supra.miflota.data.models.TokenResponse;
-// import com.supra.miflota.data.models.MessageResponse;
-
 import com.supra.miflota.data.network.ApiResponsesHelpers.TokenResponse;
 
 import java.util.Map;

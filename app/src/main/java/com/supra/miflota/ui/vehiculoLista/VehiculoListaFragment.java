@@ -48,6 +48,7 @@ public class VehiculoListaFragment extends Fragment {
                     public void onItemClick(Vehiculo vehiculo) {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("vehiculo", vehiculo);
+
                         NavOptions navOptions = new NavOptions.Builder()
                                 .setPopUpTo(R.id.nav_vehiculo_lista, true)
                                 .build();

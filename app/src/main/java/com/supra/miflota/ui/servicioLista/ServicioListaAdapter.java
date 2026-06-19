@@ -43,7 +43,6 @@ public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdap
         Service service = serviceList.get(position);
         holder.km.setText(String.valueOf(service.getKmService()+" Km"));
         holder.fecha.setText(service.getFecha());
-        holder.proveedor.setText(service.getProveedor());
         if (service.isExcepcional()) {
             holder.imagen.setVisibility(View.VISIBLE);
         } else {
@@ -81,7 +80,6 @@ public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdap
             imagen = binding.ivStar;
             km = binding.tvKilometraje;
             fecha = binding.tvFecha;
-            proveedor = binding.tvProveedor;
             contenedor = binding.contenedor;
 
         }

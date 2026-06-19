@@ -71,14 +71,14 @@ public class ServicioListaFragment extends Fragment {
         b.fabAgregarVehiculo.setOnClickListener(v -> {
             Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment);
         });
-        /// Filtrar por todas las revisiones
+        /// Filtrar por todas las servicios
         b.tgFiltros1.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (isChecked) {
                 vm.setFiltros(checkedId == R.id.btnPropio, null);
             }
         });
 
-        /// Filtrar por revisiones propias
+        /// Filtrar por servicios propias
         b.tgFiltros2.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (isChecked) {
                 vm.setFiltros(null, checkedId == R.id.bAlta);
