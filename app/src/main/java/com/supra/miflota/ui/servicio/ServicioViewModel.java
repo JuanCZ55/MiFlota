@@ -55,7 +55,8 @@ public class ServicioViewModel extends AndroidViewModel {
     public LiveData<Boolean> getOperationSuccess() {
         return operationSuccess;
     }
-//cosas del bundle
+
+    //cosas del bundle
     public void initialize(Bundle bundle) {
         if (bundle == null || !bundle.containsKey("servicio")) {
             modo.setValue(0);//modo crear
@@ -74,7 +75,8 @@ public class ServicioViewModel extends AndroidViewModel {
         }
         service.setValue(servicio);
     }
-//crear servicio
+
+    //crear servicio
     public void crearServicio(Service s) {
         SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
         int idVehiculo = pref.getInt("id_vehiculo", -1);
@@ -100,7 +102,8 @@ public class ServicioViewModel extends AndroidViewModel {
             }
         });
     }
-//actualizar servicio
+
+    //actualizar servicio
     public void actualizarServicio(Service s) {
         servicioApiService.actualizarServicio(s.getIdService(), s).enqueue(new Callback<Service>() {
             @Override
@@ -118,7 +121,8 @@ public class ServicioViewModel extends AndroidViewModel {
             }
         });
     }
-//funcion auxiliar para parsear el error
+
+    //funcion auxiliar para parsear el error
     private String parseError(Response<?> response) {
         try {
             if (response.errorBody() != null) {
