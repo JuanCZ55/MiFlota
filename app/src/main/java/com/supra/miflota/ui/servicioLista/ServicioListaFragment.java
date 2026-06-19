@@ -26,15 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioListaFragment extends Fragment {
-
     private ServicioListaViewModel vm;
-
     private FragmentServicioListaBinding b;
-
     private ServicioListaAdapter adapter;
 
-    private boolean verMisServicios = false;
-    private boolean verAlta = true;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,44 +37,28 @@ public class ServicioListaFragment extends Fragment {
         vm = new ViewModelProvider(this).get(ServicioListaViewModel.class);
 
         b.rvServicios.setLayoutManager(new LinearLayoutManager(getContext()));
+//listenr click lista
         adapter = new ServicioListaAdapter(new ArrayList<>(), getLayoutInflater(), service -> {
             Bundle bundle = new Bundle();
             bundle.putSerializable("servicio", service);
             Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment, bundle);
         });
         b.rvServicios.setAdapter(adapter);
-
-        int colorPrimary = ContextCompat.getColor(requireContext(), R.color.primary);
-        int colorBackground = ContextCompat.getColor(requireContext(), R.color.background);
-/// filtro Todos
-        b.btnTodos.setOnClickListener(v -> {
-            verMisServicios = false;
-            alternarColores(b.btnTodos, b.btnPropio, colorPrimary, colorBackground);
-            recargarLista();
+        /// cargar datos del vehiculo
+        vm.getVehiculoMutable().observe(getViewLifecycleOwner(), vehiculo -> {
+            b.tvPatente.setText(vehiculo.getPatente());
+            b.tvMarca.setText(vehiculo.getMarca().concat(" - ").concat(vehiculo.getModelo()));
         });
-/// filtro Mis Servicios
-        b.btnPropio.setOnClickListener(v -> {
-            verMisServicios = true;
-            alternarColores(b.btnPropio, b.btnTodos, colorPrimary, colorBackground);
-            recargarLista();
+        //
+        vm.getStatusMutable().observe(getViewLifecycleOwner(), status -> {
+            vm.dispararBusquedaRevisiones();
         });
-/// filtro alta
-        b.bAlta.setOnClickListener(v -> {
-            verAlta = true;
-            alternarColores(b.bAlta, b.bBaja, colorPrimary, colorBackground);
-            recargarLista();
-        });
-/// filtro baja
-        b.bBaja.setOnClickListener(v -> {
-            verAlta = false;
-            alternarColores(b.bBaja, b.bAlta, colorPrimary, colorBackground);
-            recargarLista();
-        });
-
-/// observer de la lista
+        // observer carga lista de servicios
         vm.getServiceList().observe(getViewLifecycleOwner(), lista -> {
             adapter.setServiceList(lista);
         });
+
+
 /// mensaje de error
         vm.getErrorMessage().observe(getViewLifecycleOwner(), msj -> {
             if (msj != null && !msj.isEmpty()) {
@@ -91,24 +70,23 @@ public class ServicioListaFragment extends Fragment {
         b.fabAgregarVehiculo.setOnClickListener(v -> {
             Navigation.findNavController(b.getRoot()).navigate(R.id.action_nav_servicio_lista_to_servicioFragment);
         });
-        recargarLista();
+        /// Filtrar por todas las revisiones
+        b.tgFiltros1.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (isChecked) {
+                vm.setFiltros(checkedId == R.id.btnPropio, null);
+            }
+        });
 
+        /// Filtrar por revisiones propias
+        b.tgFiltros2.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (isChecked) {
+                vm.setFiltros(null, checkedId == R.id.bAlta);
+            }
+        });
+
+        vm.cargarVehiculo();
         return b.getRoot();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        recargarLista();
-    }
 
-    private void recargarLista() {
-        vm.listServicios(verMisServicios, verAlta);
-    }
-
-
-    private void alternarColores(View activo, View inactivo, int colorPrimario, int colorFondo) {
-        activo.setBackgroundTintList(ColorStateList.valueOf(colorPrimario));
-        inactivo.setBackgroundTintList(ColorStateList.valueOf(colorFondo));
-    }
 }

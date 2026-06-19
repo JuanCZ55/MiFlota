@@ -41,7 +41,7 @@ public class ServicioListaAdapter extends RecyclerView.Adapter<ServicioListaAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolerServicios holder, int position) {
         Service service = serviceList.get(position);
-        holder.km.setText(String.valueOf(service.getKmService()));
+        holder.km.setText(String.valueOf(service.getKmService()+" Km"));
         holder.fecha.setText(service.getFecha());
         holder.proveedor.setText(service.getProveedor());
         if (service.isExcepcional()) {
