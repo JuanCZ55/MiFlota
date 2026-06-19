@@ -1,318 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:fillViewport="true">
+    tools:context=".ui.revision.RevisionFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- CABECERA: Detalle vehiculo (Fijo arriba) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/detalle_vehiculo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="#1A1C1E"
+        app:cardCornerRadius="16dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- CABECERA: Resumen del Reporte -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#1A1C1E"
-            app:cardCornerRadius="16dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#3394A3B8">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp">
-                <TextView
-                    android:id="@+id/labelId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0.1"
-                    android:text="ID REPORTE"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvIdRevision"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#CH-0000"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelId" />
-
-
-                <View
-                    android:id="@+id/dividerHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#1AFFFFFF"
-                    app:layout_constraintTop_toBottomOf="@id/tvIdRevision" />
-
-                <TextView
-                    android:id="@+id/tvDetalleFecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:drawableStart="@drawable/ic_calendar"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:text="- -/- -/- - - -"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="14sp"
-                    app:drawableTint="@color/textSecondary"
-                    app:layout_constraintBottom_toBottomOf="@id/tvIdRevision"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvIdRevision" />
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swEstado"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Estado"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/dividerHeader" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- SECCIÓN: ILUMINACIÓN -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="4dp">
-            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_lightbulb" app:tint="@color/primary" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="ILUMINACIÓN" android:textColor="@color/primary" android:textStyle="bold" android:textSize="12sp" />
-        </LinearLayout>
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:cardBackgroundColor="#1A1C1E"
-            app:cardCornerRadius="12dp"
-            app:strokeWidth="0.5dp"
-            app:strokeColor="#3394A3B8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvPatente"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:divider="?android:attr/listDivider"
-                android:showDividers="middle">
+                android:layout_weight="1"
+                android:text="Patente: N/A"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swFaroDelanteroIzquierdo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Faro Delantero Izq."
-                    android:textColor="@color/textPrimary" />
+            <TextView
+                android:id="@+id/tvMarca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="N/A"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swFaroDelanteroDerecho"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Faro Delantero Der."
-                    android:textColor="@color/textPrimary" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detalle_vehiculo">
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swFaroTraseroIzquierdo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Faro Trasero Izq."
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swFaroTraseroDerecho"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHighlight="@color/primary"
-
-                    android:padding="12dp"
-                    android:text="Faro Trasero Der."
-                    android:textColor="@color/textPrimary" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- SECCIÓN: LÍQUIDOS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="4dp">
-            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_water_drop" app:tint="@color/primary" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="LÍQUIDOS" android:textColor="@color/primary" android:textStyle="bold" android:textSize="12sp" />
-        </LinearLayout>
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="40dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:cardBackgroundColor="#1A1C1E"
-            app:cardCornerRadius="12dp"
-            app:strokeWidth="0.5dp"
-            app:strokeColor="#3394A3B8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- SECCIÓN: ILUMINACIÓN -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:divider="?android:attr/listDivider"
-                android:showDividers="middle">
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swNivelAceite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Nivel de Aceite"
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swLiquidoFrenos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Líquido de Frenos"
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swNivelRefrigerante"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Nivel de Refrigerante"
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swNivelAguaParabrisa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Nivel de Agua del Parabrisa"
-                    android:textColor="@color/textPrimary" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- SECCIÓN: Seguridad -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="4dp">
-            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_security" app:tint="@color/primary" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="LÍQUIDOS" android:textColor="@color/primary" android:textStyle="bold" android:textSize="12sp" />
-        </LinearLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:cardBackgroundColor="#1A1C1E"
-            app:cardCornerRadius="12dp"
-            app:strokeWidth="0.5dp"
-            app:strokeColor="#3394A3B8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:divider="?android:attr/listDivider"
-                android:showDividers="middle">
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swPresionNeumaticos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Pression de Neumaticos"
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swNivelFreno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Nivel de Frenos"
-                    android:textColor="@color/textPrimary" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/swMatafuegoVigente"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="Matafuego Vigente"
-                    android:textColor="@color/textPrimary" />
-
-
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- SECCIÓN: OBSERVACIONES -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="4dp"
-            android:text="OBSERVACIONES"
-            android:textColor="@color/primary"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:boxBackgroundColor="#1A1C1E"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="@color/primary"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etObservaciones"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:hint="Ingrese detalles de fallas..."
-                android:minLines="3"
-                android:textColor="@color/textPrimary"
+                android:text="ILUMINACIÓN"
+                android:drawableStart="@drawable/ic_lightbulb"
+                android:drawablePadding="8dp"
+                android:textColor="@color/primary"
+                app:drawableTint="@color/primary"
+                android:textStyle="bold"
                 android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnGuardarRevision"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="@color/primary"
-            android:text="GUARDAR CAMBIOS"
-            android:textColor="@color/textPrimary"
-            android:textStyle="bold"
-            app:cornerRadius="12dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1AFFFFFF" />
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swFaroDelanteroIzquierdo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Faro Delantero Izq."
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swFaroDelanteroDerecho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Faro Delantero Der."
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swFaroTraseroIzquierdo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Faro Trasero Izq."
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swFaroTraseroDerecho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Faro Trasero Der."
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <!-- SECCIÓN: LÍQUIDOS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="LÍQUIDOS"
+                android:drawableStart="@drawable/ic_water_drop"
+                android:drawablePadding="8dp"
+                android:textColor="@color/primary"
+                app:drawableTint="@color/primary"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1AFFFFFF" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swNivelAceite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Nivel de Aceite"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swLiquidoFrenos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Líquido de Frenos"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swNivelRefrigerante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Nivel de Refrigerante"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swNivelAguaParabrisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Nivel de Agua Parabrisas"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <!-- SECCIÓN: SEGURIDAD -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="SEGURIDAD"
+                android:drawableStart="@drawable/ic_security"
+                android:drawablePadding="8dp"
+                android:textColor="@color/primary"
+                app:drawableTint="@color/primary"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1AFFFFFF" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swPresionNeumaticos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Presión de Neumáticos"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swNivelFreno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Estado de Frenos"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swMatafuegoVigente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Matafuego Vigente"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"/>
+
+            <!-- SECCIÓN: OBSERVACIONES -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="OBSERVACIONES"
+                android:drawableStart="@drawable/ic_observation"
+                android:drawablePadding="8dp"
+                android:textColor="@color/primary"
+                app:drawableTint="@color/primary"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="#1AFFFFFF" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#1A1C1E"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxStrokeWidth="0dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etObservaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Detalles adicionales..."
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- SECCIÓN: ESTADO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="ESTADO"
+                android:drawableStart="@drawable/ic_revisiones"
+                android:drawablePadding="8dp"
+                android:textColor="@color/primary"
+                app:drawableTint="@color/primary"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#1AFFFFFF" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Estado"
+                android:textColor="@color/textPrimary"
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint"
+                />
+
+            <!-- BOTÓN GUARDAR -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardarRevision"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="REGISTRAR REVISION"
+                android:textStyle="bold"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/textPrimary"
+                app:cornerRadius="12dp" />
+
+            <!-- BOTÓN ACTUALIZAR -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnActualizarRevision"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="GUARDAR REVISION"
+                android:textStyle="bold"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/textPrimary"
+                android:visibility="gone"
+                app:cornerRadius="12dp" />
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

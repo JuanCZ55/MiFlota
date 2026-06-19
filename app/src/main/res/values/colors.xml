@@ -17,4 +17,6 @@
     <color name="success">#10DC1C</color>
     <color name="warning">#FFEB3B</color>
 
+    <color name="primaryLight">#70A5FF</color>
+    <color name="hintLight">#9DA0A8</color>
 </resources>
