@@ -30,11 +30,7 @@ public class VehiculoFragment extends Fragment {
         binding = FragmentVehiculoBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(VehiculoViewModel.class);
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            viewModel.cargarVehiculo(bundle);
-        }
-        viewModel.actualizarVehiculo();
-
+        viewModel.cargarVehiculo(bundle);
 
         /// Mostrar datos del vehiculo
         viewModel.getVehiculoMutable().observe(getViewLifecycleOwner(), vehiculo -> {
@@ -63,9 +59,6 @@ public class VehiculoFragment extends Fragment {
             Toast.makeText(getContext(), mensaje, Toast.LENGTH_SHORT).show();
         });
 
-
-
-
         NavController navController = NavHostFragment.findNavController(this);
         /// Accion del retroceso
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
@@ -78,8 +71,15 @@ public class VehiculoFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
     }
+
 }

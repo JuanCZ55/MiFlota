@@ -1,6 +1,8 @@
 package com.supra.miflota.ui.vehiculoLista;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -64,5 +66,15 @@ public class VehiculoListaViewModel extends AndroidViewModel {
                 errorMessage.setValue("Error de conexión: " + t.getMessage());
             }
         });
+    }
+
+    /**
+     * Limpia los datos del vehiculo almacenados en SharedPreferences.
+     * */
+    public void limpiarDatosVehiculo() {
+        SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.apply();
     }
 }

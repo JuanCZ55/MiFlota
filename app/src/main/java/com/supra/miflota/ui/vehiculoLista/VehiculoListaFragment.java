@@ -47,13 +47,12 @@ public class VehiculoListaFragment extends Fragment {
                     @Override
                     public void onItemClick(Vehiculo vehiculo) {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("id_vehiculo", vehiculo.getIdVehiculo());
+                        bundle.putSerializable("vehiculo", vehiculo);
                         NavOptions navOptions = new NavOptions.Builder()
                                 .setPopUpTo(R.id.nav_vehiculo_lista, true)
                                 .build();
 
                         Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle, navOptions);
-                       // Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle);
                     }
                 });
                 binding.rvListadoVehiculos.setAdapter(adapter);
@@ -68,6 +67,8 @@ public class VehiculoListaFragment extends Fragment {
             }
         });
         vehiculoListaViewModel.cargarListadoDeVehiculos();
+
+        vehiculoListaViewModel.limpiarDatosVehiculo();
 
         /// Accion del retroceso
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {

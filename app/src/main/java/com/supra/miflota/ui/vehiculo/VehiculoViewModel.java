@@ -9,9 +9,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
 import com.supra.miflota.data.models.Matafuego;
 import com.supra.miflota.data.models.Vehiculo;
 import com.supra.miflota.data.network.ApiClient;
+import com.supra.miflota.data.network.ApiResponsesHelpers.ApiErrorResponse;
 import com.supra.miflota.data.network.ApiServices.VehiculoApiService;
 
 import retrofit2.Call;
@@ -38,19 +40,8 @@ public class VehiculoViewModel extends AndroidViewModel {
     }
 
 
-    /**
-     * Carga los datos del vehiculo en el LiveData vehiculoMutable.
-     * Si ocurre un error, se actualiza el LiveData mensajeError.
-     * @param bundle Datos del vehiculo.
-    * */
-    public void cargarVehiculo(Bundle bundle){
-        if (bundle == null || !bundle.containsKey("id_vehiculo")) {
-            mensajeError.postValue("No se encontraron datos del vehiculo.");
-            return;
-        }
-        int idVehiculo = bundle.getInt("id_vehiculo");
-        consultarVehiculo(idVehiculo);
-    }
+
+
 
     private void consultarVehiculo(int idVehiculo){
 
@@ -84,14 +75,43 @@ public class VehiculoViewModel extends AndroidViewModel {
         });
     }
 
-    public void actualizarVehiculo(){
-        SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo",
-                Context.MODE_PRIVATE);
-        int idVehiculo = pref.getInt("id_vehiculo", 0);
-        if (idVehiculo == 0) {
-            mensajeError.postValue("No se encontraron datos del vehiculo.");
+
+
+    /**
+     * Carga los datos del vehiculo en el LiveData vehiculoMutable.
+     * Si ocurre un error, se actualiza el LiveData mensajeError.
+     * @param bundle Datos del vehiculo.
+     * */
+    public void cargarVehiculo(Bundle bundle) {
+        SharedPreferences preferences = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
+        if(bundle == null && !preferences.contains("id_vehiculo") ){
+            mensajeError.setValue("No se encontraron datos del vehiculo.");
+            return;
+        }
+        if(bundle != null && bundle.containsKey("vehiculo")){
+            Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("vehiculo");
+            preferences.edit()
+                    .putInt("id_vehiculo", vehiculo.getIdVehiculo())
+                    .putString("patente", vehiculo.getPatente())
+                    .putString("marca", vehiculo.getMarca())
+                    .putString("modelo", vehiculo.getModelo())
+                    .apply();
+            vehiculoMutable.postValue(vehiculo);
+            return;
+        }
+        int idVehiculo = 0;
+        try{
+            idVehiculo = preferences.getInt("id_vehiculo", 0);
+            if(idVehiculo == 0){
+                mensajeError.setValue("Identificador de Vehiculo Invalido");
+                return;
+            }
+
+        }catch (ClassCastException e){
+            mensajeError.setValue("No se pudo cargar el vehiculo por su identificador.");
             return;
         }
         consultarVehiculo(idVehiculo);
     }
+
 }
