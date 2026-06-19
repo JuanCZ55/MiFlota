@@ -1,5 +1,6 @@
 package com.supra.miflota.ui.servicioLista;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -81,6 +82,14 @@ public class ServicioListaFragment extends Fragment {
         b.tgFiltros2.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (isChecked) {
                 vm.setFiltros(null, checkedId == R.id.bAlta);
+            }
+        });
+
+        /// Accion del retroceso
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo);
             }
         });
 

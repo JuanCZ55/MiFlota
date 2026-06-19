@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Base.Theme.MiFlota" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorControlNormal">@color/white</item>
     </style>
     <style name="Theme.MiFlota" parent="Base.Theme.MiFlota" />
 

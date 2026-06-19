@@ -1,5 +1,6 @@
 package com.supra.miflota.ui.vehiculoLista;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,14 +48,29 @@ public class VehiculoListaFragment extends Fragment {
                     public void onItemClick(Vehiculo vehiculo) {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("vehiculo", vehiculo);
-                        Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo,bundle);
+                        Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle);
                     }
                 });
                 binding.rvListadoVehiculos.setAdapter(adapter);
             }
+        });
 
+        binding.btnSalirListadoVehiculos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Navigation.findNavController(getView()).navigate(R.id.nav_logout);
+            }
         });
         vehiculoListaViewModel.cargarListadoDeVehiculos();
+
+        /// Accion del retroceso
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                requireActivity().finish();
+            }
+        });
         return binding.getRoot();
     }
 

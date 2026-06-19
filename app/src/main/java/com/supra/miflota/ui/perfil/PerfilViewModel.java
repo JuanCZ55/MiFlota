@@ -24,6 +24,7 @@ public class PerfilViewModel extends AndroidViewModel {
     private MutableLiveData<Usuario> usuario;
     private MutableLiveData<String> msj;
     private MutableLiveData<Boolean> operationSuccess = new MutableLiveData<>();
+     private MutableLiveData<String> emailMutable;
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
@@ -31,7 +32,7 @@ public class PerfilViewModel extends AndroidViewModel {
         usuario = new MutableLiveData<>();
         msj = new MutableLiveData<>();
         operationSuccess = new MutableLiveData<>();
-
+        emailMutable = new MutableLiveData<>();
     }
 
     public LiveData<String> getMsj() {
@@ -45,6 +46,10 @@ public class PerfilViewModel extends AndroidViewModel {
     public LiveData<Boolean> getOperationSuccess() {
         return operationSuccess;
     }
+    public LiveData<String> getEmail() {
+        return emailMutable;
+    }
+
 
     public void cargarUsuario() {
         usuarioApiService.getUsuario().enqueue(new Callback<Usuario>() {
@@ -83,7 +88,7 @@ public class PerfilViewModel extends AndroidViewModel {
                 }
                 msj.setValue("Email actualizado");
                 operationSuccess.setValue(true);
-
+                emailMutable.postValue(email);
             }
 
             @Override

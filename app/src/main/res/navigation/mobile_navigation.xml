@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_vehiculo_lista_to_nav_perfil"
             app:destination="@id/nav_perfil" />
+        <action
+            android:id="@+id/action_nav_vehiculo_lista_to_nav_logout"
+            app:destination="@id/nav_logout" />
     </fragment>
 
     <fragment
@@ -83,7 +86,7 @@
     <fragment
         android:id="@+id/nav_revision"
         android:name="com.supra.miflota.ui.revision.RevisionFragment"
-        android:label="fragment_revision"
+        android:label="Detalle de Revision"
         tools:layout="@layout/fragment_revision" />
     <fragment
         android:id="@+id/servicioFragment"

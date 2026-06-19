@@ -3,6 +3,7 @@ package com.supra.miflota.ui.kilometrajeLista;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.AAChartModel.AAChartCore.AATools.AAColor.AARgba;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -126,6 +127,15 @@ public class KilometrajeListaFragment extends Fragment {
             }
         });
         mViewModel.cargarLista();
+
+        /// Accion del retroceso
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo);
+            }
+        });
+
         return binding.getRoot();
     }
 

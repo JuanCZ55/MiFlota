@@ -16,7 +16,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/background"
             app:titleTextColor="@color/textPrimary"
-            app:popupTheme="@style/Theme.MiFlota" />
+            app:popupTheme="@style/Theme.MiFlota"
+            app:subtitleTextColor="@color/textPrimary"/>
 
         <View
             android:layout_width="match_parent"

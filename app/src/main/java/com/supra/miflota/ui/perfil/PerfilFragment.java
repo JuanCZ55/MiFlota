@@ -1,5 +1,6 @@
 package com.supra.miflota.ui.perfil;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -12,13 +13,16 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.supra.miflota.R;
 import com.supra.miflota.databinding.FragmentPerfilBinding;
+import com.supra.miflota.ui.menu.SidebarViewModel;
 
 public class PerfilFragment extends Fragment {
-
+    private SidebarViewModel siderVW;
     private PerfilViewModel vm;
     private FragmentPerfilBinding b;
 
@@ -26,6 +30,7 @@ public class PerfilFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         vm = new ViewModelProvider(this).get(PerfilViewModel.class);
+        siderVW = new ViewModelProvider(requireActivity()).get(SidebarViewModel.class);
         b = FragmentPerfilBinding.inflate(inflater, container, false);
         vm.getUsuario().observe(getViewLifecycleOwner(), usuario -> {
             b.etNombre.setText(usuario.getPersona().getNombre());
@@ -40,6 +45,20 @@ public class PerfilFragment extends Fragment {
                 vm.limpiarMsj();
             }
         });
+
+        /// Accion del retroceso
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo);
+            }
+        });
+
+        vm.getEmail().observe(getViewLifecycleOwner(), email -> {
+            siderVW.setUserEmail(email);
+        });
+
+
         vm.getOperationSuccess().observe(getViewLifecycleOwner(), success -> {
             if (success) {
                 vm.cargarUsuario();

@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.supra.miflota.data.models.Matafuego;
 import com.supra.miflota.data.models.Vehiculo;
 
 public class VehiculoViewModel extends AndroidViewModel {
@@ -35,16 +36,12 @@ public class VehiculoViewModel extends AndroidViewModel {
      * @param bundle Datos del vehiculo.
     * */
     public void cargarVehiculo(Bundle bundle){
+        Vehiculo vehiculo;
         if (bundle == null || !bundle.containsKey("vehiculo")) {
-            mensajeError.setValue("No se pudo cargar la información del vehiculo.");
+            mensajeError.postValue("No se encontraron datos del vehiculo.");
             return;
         }
-
-        Vehiculo vehiculo = (Vehiculo) bundle.getSerializable("vehiculo");
-        if (vehiculo == null) {
-            mensajeError.setValue("No se pudo cargar la información del vehiculo.");
-            return;
-        }
+        vehiculo = (Vehiculo) bundle.getSerializable("vehiculo");
 
         SharedPreferences pref = getApplication().getSharedPreferences("DataVehiculo", Context.MODE_PRIVATE);
         pref.edit()
@@ -53,7 +50,8 @@ public class VehiculoViewModel extends AndroidViewModel {
                 .putString("marca", vehiculo.getMarca())
                 .putString("modelo", vehiculo.getModelo())
                 .apply();
-
         vehiculoMutable.postValue(vehiculo);
     }
+
+
 }

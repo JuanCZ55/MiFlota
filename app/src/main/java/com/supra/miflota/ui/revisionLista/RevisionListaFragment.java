@@ -1,5 +1,6 @@
 package com.supra.miflota.ui.revisionLista;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -90,6 +92,14 @@ public class RevisionListaFragment extends Fragment {
             public void onClick(View v) {
                 androidx.navigation.Navigation.findNavController(requireView())
                         .navigate(R.id.nav_revision);
+            }
+        });
+
+        /// Accion del retroceso
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo);
             }
         });
 

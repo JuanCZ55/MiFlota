@@ -121,40 +121,11 @@ public class RevisionViewModel extends AndroidViewModel {
         if (token == null) {
             return;
         }
-        Log.d("Revision", token);
-        Log.d("Revision", revision.toString());
+
         Call<ChecklistDiario> call = revisionApiService.crearRevision(token, revision);
         call.enqueue(new Callback<ChecklistDiario>() {
             @Override
             public void onResponse(Call<ChecklistDiario> call, Response<ChecklistDiario> response) {
-                /*
-                if (response.isSuccessful() && response.body() != null) {
-                    // === RESPUESTA 201 CREATED ===
-                    ChecklistDiario checklistCreado = response.body();
-
-                    Log.d("API_SUCCESS", "Checklist creado con éxito.");
-                    Log.d("API_SUCCESS", "ID Checklist: " + checklistCreado.getIdChecklistDiario());
-                    Log.d("API_SUCCESS", "Fecha del Servidor: " + checklistCreado.getFecha());
-                    Log.d("API_SUCCESS", "Estado: " + checklistCreado.isEstado());
-
-                    // Aquí puedes actualizar la interfaz de usuario o regresar a la pantalla anterior
-                } else {
-                    // === MANEJO DE ERRORES POR CÓDIGO HTTP ===
-                    switch (response.code()) {
-                        case 400:
-                            Log.e("API_ERROR", "400 Bad Request: Estructura inválida o 'observaciones' excede los 255 caracteres.");
-                            break;
-                        case 401:
-                            Log.e("API_ERROR", "401 Unauthorized: El token no es válido o expiró.");
-                            break;
-                        case 500:
-                            Log.e("API_ERROR", "500 Internal Server Error: El idVehiculo no existe en la BD o el vehículo está inactivo.");
-                            break;
-                        default:
-                            Log.e("API_ERROR", "Código de error no controlado: " + response.code());
-                            break;
-                    }
-                }*/
                 if(!response.isSuccessful()){
                     errorMessage.setValue("Ocurrio un error al cargar la revision");
                     return;
