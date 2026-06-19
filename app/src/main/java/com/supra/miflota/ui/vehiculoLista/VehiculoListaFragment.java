@@ -47,8 +47,13 @@ public class VehiculoListaFragment extends Fragment {
                     @Override
                     public void onItemClick(Vehiculo vehiculo) {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("vehiculo", vehiculo);
-                        Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle);
+                        bundle.putSerializable("id_vehiculo", vehiculo.getIdVehiculo());
+                        NavOptions navOptions = new NavOptions.Builder()
+                                .setPopUpTo(R.id.nav_vehiculo_lista, true)
+                                .build();
+
+                        Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle, navOptions);
+                       // Navigation.findNavController(getView()).navigate(R.id.nav_vehiculo, bundle);
                     }
                 });
                 binding.rvListadoVehiculos.setAdapter(adapter);

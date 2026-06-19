@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,10 @@ public class VehiculoFragment extends Fragment {
         binding = FragmentVehiculoBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(VehiculoViewModel.class);
         Bundle bundle = getArguments();
-
-        viewModel.cargarVehiculo(bundle);
-
+        if (bundle != null) {
+            viewModel.cargarVehiculo(bundle);
+        }
+        viewModel.actualizarVehiculo();
 
 
         /// Mostrar datos del vehiculo
@@ -44,7 +46,6 @@ public class VehiculoFragment extends Fragment {
             binding.etNumeroMotor.setText(vehiculo.getNumeroMotor());
             binding.etCantNeumaticos.setText(String.valueOf(vehiculo.getCantidadNeumaticos()));
             binding.etCantAuxilios.setText(String.valueOf(vehiculo.getCantidadAuxilios()));
-
             if(vehiculo.getMatafuego() != null){
                 binding.btnMatafuego.setVisibility(View.VISIBLE);
                 binding.btnMatafuego.setOnClickListener(v -> {
@@ -73,13 +74,12 @@ public class VehiculoFragment extends Fragment {
                 navController.navigate(R.id.nav_vehiculo_lista);
             }
         });
-        
         return binding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //viewModel.actualizarVehiculo();
+
     }
 }

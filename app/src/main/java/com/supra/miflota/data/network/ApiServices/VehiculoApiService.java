@@ -59,4 +59,9 @@ public interface VehiculoApiService {
             @Path("idVehiculo") int idVehiculo,
             @Path("idMatafuego") int idMatafuego
     );
+
+    @GET("vehiculos/obtener/{idVehiculo}")
+    Call<Vehiculo> obtenerVehiculo(
+            @Path("idVehiculo") int idVehiculo
+    );
 }

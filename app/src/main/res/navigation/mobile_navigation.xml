@@ -47,8 +47,10 @@
     <fragment
         android:id="@+id/nav_kilometraje_lista"
         android:name="com.supra.miflota.ui.kilometrajeLista.KilometrajeListaFragment"
-        android:label="Kilometrajes"
-        tools:layout="@layout/fragment_kilometraje_lista" />
+        android:label="Kilometraje"
+        tools:layout="@layout/fragment_kilometraje_lista"
+
+        />
 
     <fragment
         android:id="@+id/nav_revision_lista"
