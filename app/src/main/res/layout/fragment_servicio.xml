@@ -65,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:text="Aceite"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbAlineoBalanceo"
@@ -74,8 +74,8 @@
                 android:layout_height="wrap_content"
                 android:text="Alineación y Balanceo"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaAceite"
@@ -83,8 +83,8 @@
                 android:layout_height="wrap_content"
                 android:text="Bomba de Aceite"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaAgua"
@@ -92,8 +92,8 @@
                 android:layout_height="wrap_content"
                 android:text="Bomba de Agua"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBombaCombustible"
@@ -101,8 +101,8 @@
                 android:layout_height="wrap_content"
                 android:text="Bomba de Combustible"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbBujias"
@@ -110,8 +110,8 @@
                 android:layout_height="wrap_content"
                 android:text="Bujias"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbCorreaDentada"
@@ -119,8 +119,8 @@
                 android:layout_height="wrap_content"
                 android:text="Correa Dentada"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeAceite"
@@ -128,8 +128,8 @@
                 android:layout_height="wrap_content"
                 android:text="Filtro de Aceite"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbCorreaPolyV"
@@ -137,8 +137,8 @@
                 android:layout_height="wrap_content"
                 android:text="Correa Poly-V"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeAire"
@@ -146,8 +146,8 @@
                 android:layout_height="wrap_content"
                 android:text="Filtro de Aire"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbFiltroDeCombustible"
@@ -155,8 +155,8 @@
                 android:layout_height="wrap_content"
                 android:text="Filtro de Combustible"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
 
         </LinearLayout>
 
@@ -230,12 +230,14 @@
                 android:gravity="start|center_vertical"
                 android:text="Realizado"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
+
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.3" />
+
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/cbEstado"
                 android:layout_width="0dp"
@@ -245,8 +247,8 @@
                 android:gravity="start|center_vertical"
                 android:text="Estado"
                 android:textColor="@color/textPrimary"
-                app:thumbTint="@color/switch_color"
-                app:trackTint="@color/hint" />
+                app:thumbTint="@color/switch_thumb_tint"
+                app:trackTint="@color/switch_track_tint" />
         </LinearLayout>
 
         <FrameLayout

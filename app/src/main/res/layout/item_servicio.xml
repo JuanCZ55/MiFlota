@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/backgroundCard"
     app:cardCornerRadius="24dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/textPrimary"
-    app:strokeWidth="1dp"
-    app:cardBackgroundColor="@color/background">
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contenedor"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="200.000km"
             android:textColor="@color/textPrimary"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,9 +41,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:drawableStart="@drawable/ic_calendar"
             android:text="12/04/2026 20:23:46"
             android:textColor="@color/textPrimary"
             android:textSize="16sp"
+            app:drawableTint="@color/textPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvKilometraje" />
@@ -54,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Proveedor Pablo"
-            android:textColor="@color/textPrimary"
+            android:textColor="@color/success"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

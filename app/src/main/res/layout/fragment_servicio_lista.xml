@@ -7,15 +7,58 @@
     android:background="@color/background"
     tools:context=".ui.vehiculoLista.VehiculoListaFragment">
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/detalle_vehiculo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/backgroundCard"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvPatente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Patente: N/A"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMarca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="N/A"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/tgFiltros1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:checkedButton="@+id/btnTodos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detalle_vehiculo"
+        app:selectionRequired="true"
         app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
@@ -23,10 +66,9 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
             android:text="Todos"
-            android:textColor="@color/textPrimary"
-            app:rippleColor="@color/primary"
+            android:textColor="@color/text_toggle_selector"
+            app:backgroundTint="@color/bg_toggle_selector"
             app:strokeColor="@color/primary" />
 
         <com.google.android.material.button.MaterialButton
@@ -34,23 +76,22 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/background"
             android:text="Propio"
-            android:textColor="@color/textPrimary"
-            app:rippleColor="@color/primary"
+            android:textColor="@color/text_toggle_selector"
+            app:backgroundTint="@color/bg_toggle_selector"
             app:strokeColor="@color/primary" />
-
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/tgFiltros2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         app:checkedButton="@+id/bAlta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tgFiltros1"
+        app:selectionRequired="true"
         app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
@@ -58,25 +99,20 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
-            android:text="Alta"
-            android:textColor="@color/textPrimary"
-            app:rippleColor="@color/primary"
-            app:strokeColor="@color/primary"
-
-            />
+            android:text="Activos"
+            android:textColor="@color/text_toggle_selector"
+            app:backgroundTint="@color/bg_toggle_selector"
+            app:strokeColor="@color/primary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bBaja"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/background"
-            android:text="Baja"
-            android:textColor="@color/textPrimary"
-            app:rippleColor="@color/primary"
+            android:text="Inactivos"
+            android:textColor="@color/text_toggle_selector"
+            app:backgroundTint="@color/bg_toggle_selector"
             app:strokeColor="@color/primary" />
-
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -84,12 +120,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tgFiltros2"
-        tools:listitem="@android:layout/simple_list_item_1"
-        android:layout_marginBottom="40dp"/>
+        tools:listitem="@android:layout/simple_list_item_1" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregarVehiculo"
