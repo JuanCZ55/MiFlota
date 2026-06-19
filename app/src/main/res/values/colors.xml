@@ -19,4 +19,5 @@
 
     <color name="primaryLight">#70A5FF</color>
     <color name="hintLight">#9DA0A8</color>
+    <color name="backgroundCard">#1A1C1E</color>
 </resources>

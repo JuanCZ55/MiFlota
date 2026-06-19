@@ -61,12 +61,20 @@
         android:id="@+id/nav_servicio_lista"
         android:name="com.supra.miflota.ui.servicioLista.ServicioListaFragment"
         android:label="Servicios"
-        tools:layout="@layout/fragment_servicio_lista" />
+        tools:layout="@layout/fragment_servicio_lista" >
+        <action
+            android:id="@+id/action_nav_servicio_lista_to_servicioFragment"
+            app:destination="@id/servicioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_perfil"
         android:name="com.supra.miflota.ui.perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_nav_perfil_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.supra.miflota.ui.logout.LogoutFragment"
@@ -77,5 +85,15 @@
         android:name="com.supra.miflota.ui.revision.RevisionFragment"
         android:label="fragment_revision"
         tools:layout="@layout/fragment_revision" />
+    <fragment
+        android:id="@+id/servicioFragment"
+        android:name="com.supra.miflota.ui.servicio.ServicioFragment"
+        android:label="fragment_servicio"
+        tools:layout="@layout/fragment_servicio" />
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.supra.miflota.ui.perfil.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" />
 
 </navigation>
