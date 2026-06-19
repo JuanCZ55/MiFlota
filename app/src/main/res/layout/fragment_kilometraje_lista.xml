@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/grafico" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/flotanteKilometraje"
+        android:id="@+id/btnflotanteKilometraje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="24dp"

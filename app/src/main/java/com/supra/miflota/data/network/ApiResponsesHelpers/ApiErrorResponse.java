@@ -12,6 +12,8 @@ public class ApiErrorResponse
     private int status;
     @SerializedName("errors")
     private Map<String,String> errors;
+    @SerializedName("message")
+    private String message;
 
     public String getTitle() {
         return title;
@@ -36,6 +38,13 @@ public class ApiErrorResponse
     public void setErrors(Map<String, String> errors) {
         this.errors = errors;
     }
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 
     @Override
     public String toString() {

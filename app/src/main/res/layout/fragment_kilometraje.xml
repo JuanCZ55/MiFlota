@@ -40,7 +40,7 @@
             app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/etKilometraje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -70,18 +70,6 @@
             android:paddingVertical="12dp"
             android:text="Crear Registro"
             android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/btnEditarKilometraje"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:backgroundTint="@color/primary"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:paddingVertical="12dp"
-            android:text="Guardar Cambios"
-            android:textSize="16sp"
-            android:visibility="gone" />
 
     </LinearLayout>
 

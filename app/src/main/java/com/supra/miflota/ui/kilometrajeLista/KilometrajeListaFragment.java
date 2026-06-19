@@ -39,6 +39,7 @@ import com.github.AAChartModel.AAChartCore.AATools.AALinearGradientDirection;
 import com.supra.miflota.R;
 import com.supra.miflota.data.models.RegistroKilometraje;
 import com.supra.miflota.databinding.FragmentKilometrajeListaBinding;
+import com.supra.miflota.ui.kilometraje.kilometrajeFragment;
 
 import java.util.List;
 import java.util.Map;
@@ -106,6 +107,7 @@ public class KilometrajeListaFragment extends Fragment {
                     public void onItemClick(RegistroKilometraje registroKilometraje) {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("registroKilometraje", registroKilometraje);
+                        bundle.putBoolean("esEdicion", registroKilometraje.isCurrentUser());
                         Navigation.findNavController(getView()).navigate(R.id.nav_kilometraje
                                 ,bundle);
                     }
@@ -117,7 +119,12 @@ public class KilometrajeListaFragment extends Fragment {
                 }
             }
         });
-
+        binding.btnflotanteKilometraje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.nav_kilometraje);
+            }
+        });
         mViewModel.cargarLista();
         return binding.getRoot();
     }
