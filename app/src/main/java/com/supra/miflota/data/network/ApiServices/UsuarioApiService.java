@@ -4,6 +4,7 @@ import com.supra.miflota.data.models.Usuario;
 import com.supra.miflota.data.network.ApiResponsesHelpers.MessageResponse;
 import com.supra.miflota.data.network.ApiResponsesHelpers.PagedResponse;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -31,12 +32,12 @@ public interface UsuarioApiService {
      * @return
      */
     @PUT("usuarios/password")
-    Call<Void> updatePassword(@Body Map<String, String> bodyDatos);
+    Call<Void> updatePassword(@Body HashMap<String, String> bodyDatos);
 
     @PUT("usuarios/email")
     Call<ResponseBody> updateEmail(
             @Body String emailDto
     );
-    @PUT("usuarios/getMe")
+    @GET("usuarios/getMe")
     Call<Usuario> getUsuario();
 }
