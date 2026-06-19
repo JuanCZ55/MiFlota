@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/nav_kilometraje_lista"
         android:name="com.supra.miflota.ui.kilometrajeLista.KilometrajeListaFragment"
-        android:label="Kilometraje"
+        android:label="Kilometrajes"
         tools:layout="@layout/fragment_kilometraje_lista" />
 
     <fragment
@@ -91,17 +91,17 @@
     <fragment
         android:id="@+id/servicioFragment"
         android:name="com.supra.miflota.ui.servicio.ServicioFragment"
-        android:label="fragment_servicio"
+        android:label="Servicio"
         tools:layout="@layout/fragment_servicio" />
     <fragment
         android:id="@+id/passwordFragment"
         android:name="com.supra.miflota.ui.perfil.PasswordFragment"
-        android:label="fragment_password"
+        android:label="Cambiar Contraseña"
         tools:layout="@layout/fragment_password" />
     <fragment
         android:id="@+id/nav_kilometraje"
         android:name="com.supra.miflota.ui.kilometraje.kilometrajeFragment"
-        android:label="fragment_kilometraje"
+        android:label="Kilometraje"
         tools:layout="@layout/fragment_kilometraje" />
 
 </navigation>

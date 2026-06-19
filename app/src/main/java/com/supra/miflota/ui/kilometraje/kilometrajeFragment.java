@@ -101,8 +101,7 @@ public class kilometrajeFragment extends Fragment {
             public void onChanged(RegistroKilometraje registroKilometraje) {
                 binding.etKilometraje.setText(registroKilometraje.getKilometraje()+ "");
                 binding.switchEstadoKilometraje.setChecked(registroKilometraje.isEstado());
-                binding.switchEstadoKilometraje.setText(registroKilometraje.isEstado() ? "Estado " +
-                        "del registro: Activo" : "Estado del registro: Inactivo");
+                binding.switchEstadoKilometraje.setText(registroKilometraje.isEstado() ? "Estado: Activo" : "Estado: Inactivo");
             }
         });
 
@@ -118,8 +117,7 @@ public class kilometrajeFragment extends Fragment {
         binding.switchEstadoKilometraje.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull CompoundButton compoundButton, boolean b) {
-                compoundButton.setText( b ? "Estado " +
-                        "del registro: Activo" : "Estado del registro: Inactivo");
+                compoundButton.setText( b ? "Estado: Activo" : "Estado: Inactivo");
             }
         });
 

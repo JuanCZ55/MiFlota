@@ -21,30 +21,33 @@
         app:layout_constraintVertical_bias="0.314">
 
         <TextView
-            android:id="@+id/tvKilometraje"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Registro de Kilometraje"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:layout_marginBottom="4dp"
+            android:text="Kilometraje"
+            android:textColor="@color/textSecondary"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilKilometraje"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="Ingrese los kilómetros"
-            app:hintTextColor="@color/white">
+            android:layout_marginBottom="12dp"
+            app:boxBackgroundColor="@color/backgroundCard"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeWidth="0dp"
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etKilometraje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textColor="@color/white" />
+                android:enabled="false"
+                android:hint="Ingrese el kilometraje"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.materialswitch.MaterialSwitch
@@ -53,23 +56,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:checked="true"
-            app:thumbTint="@color/switch_thumb_color"
-            app:trackTint="@color/switch_track_color"
+            app:thumbTint="@color/switch_thumb_tint"
+            app:trackTint="@color/switch_track_tint"
             app:trackDecorationTint="@null"
-            android:text="Estado del registro: Activo"
+            android:text="Estado: Activo"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCrearKilometraje"
-            style="@style/Widget.Material3.Button"
-            android:backgroundTint="@color/primary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:paddingVertical="12dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary"
             android:text="Crear Registro"
-            android:textSize="16sp" />
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+<!--        <Button-->
+<!--            android:id="@+id/btnCrearKilometraje"-->
+<!--            style="@style/Widget.Material3.Button"-->
+<!--            android:backgroundTint="@color/primary"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:paddingVertical="12dp"-->
+<!--            android:text="Crear Registro"-->
+<!--            android:textSize="16sp" />-->
 
     </LinearLayout>
 

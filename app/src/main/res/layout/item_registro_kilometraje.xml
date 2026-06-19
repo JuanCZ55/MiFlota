@@ -6,11 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
-    app:cardBackgroundColor="#1A1C1E"
+    app:cardBackgroundColor="@color/backgroundCard"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
     app:strokeColor="#2A2D35"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contenedor"
